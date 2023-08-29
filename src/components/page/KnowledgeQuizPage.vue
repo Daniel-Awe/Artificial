@@ -447,7 +447,7 @@ export default {
             this.testData = []
             this.currentQuestionIndex = 0
             this.testData.push(this.testDataAll[i])
-            this.fromCollect = false
+            this.fromCollect = true
             this.mistakeCollection = []
             this.fromMistake = false
             this.jumpNumber = 0
