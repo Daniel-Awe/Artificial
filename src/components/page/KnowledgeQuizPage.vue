@@ -30,7 +30,7 @@
               <div class="lev5 level" v-if="categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[this.subtitleIndex].category.length != 0">
                 <div class="catebutton" v-for="(category, id) in categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[this.subtitleIndex].category" :key="id" @click="categoryClick(5, id, category.text)">{{ category.text }}</div>
               </div>
-
+              <div class="start" @click="startClick()" :class="{ startSellected: isCategory }">{{ startWords }}</div>
               <div class="random" @click="categoryClick(0, -1)" style="">随机抽取</div>
             </div>
           </div>
@@ -127,6 +127,7 @@ export default {
     return {
       title: '知识小测',
       subtitle: '',
+
       // 所有的题目
       testDataAll: [],
       // 选出来的题目
@@ -148,6 +149,9 @@ export default {
       titleIndex: 0,
       subtitleIndex: 0,
       categoryIndex: 0,
+      startWords: '开始答题',
+      // 是否已经选择响应的题目
+      isCategory: false,
 
       // 练习题
       //  是否选中
@@ -424,6 +428,13 @@ export default {
     },
 
     // 目录功能function
+    // 开始答题
+    startClick() {
+      if (this.isCategory) {
+        this.gotoTest()
+        this.startWords = '继续答题'
+      }
+    },
     // 重置
     reset() {},
     // 跳转至习题
@@ -457,6 +468,7 @@ export default {
       this.mistakeCollection = []
       this.fromMistake = false
       this.testData = []
+      this.isCategory = false
 
       if (id == 1) {
         this.bankIndex = index
@@ -479,23 +491,23 @@ export default {
             // 一级标题“实操”
             if (question.bank === '实操') {
               if (count === index) {
+                this.isCategory = true
                 this.testData.push(question)
               }
               count++
             }
           }
-          this.gotoTest()
         } else if (this.bankIndex == 0 && this.subbankIndex == 1) {
           for (const question of this.testDataAll) {
             // “原理”下的二级标题“测试”
             if (question.bank === '原理' && question.subbank === '测验') {
               if (count === index) {
+                this.isCategory = true
                 this.testData.push(question)
               }
               count++
             }
           }
-          this.gotoTest()
         }
         console.log(count)
       } else if (id == 4) {
@@ -505,27 +517,27 @@ export default {
           for (const question of this.testDataAll) {
             // “原理”下的“知识点”的“人工智能”下的四级标题“发展历程” & “拓展介绍”
             if (question.subtitle === '发展历程') {
+              this.isCategory = true
               this.testData.push(question)
             }
           }
-          this.gotoTest()
         } else if (this.titleIndex == 0 && this.subtitleIndex == 1) {
           for (const question of this.testDataAll) {
             if (question.subtitle === '拓展介绍') {
+              this.isCategory = true
               this.testData.push(question)
             }
           }
-          this.gotoTest()
         }
       } else if (id == 5) {
         this.categoryIndex = index
         if (this.titleIndex == 1) {
           for (const question of this.testDataAll) {
             if (question.category === category) {
+              this.isCategory = true
               this.testData.push(question)
             }
           }
-          this.gotoTest()
         }
       } else if (id == 0) {
         var testNumber = Math.floor(Math.random() * 11) + 10
@@ -535,6 +547,7 @@ export default {
 
         setTimeout(() => {
           for (var i = 0; i < testNumber; i++) {
+            this.isCategory = true
             // 随机生成数字
             const randomNumber = Math.floor(Math.random() * (20 - i))
             var j = 0
@@ -550,8 +563,6 @@ export default {
 
           console.log(this.testData)
           console.log('this')
-
-          this.gotoTest()
         }, 100)
       }
     },
@@ -583,18 +594,14 @@ export default {
           this.right = false
           correctChoice.style.background = 'rgba(212, 48, 48, 0.3)'
           currentChoice.innerHTML = '复习知识点'
+          currentChoice.style.background = 'rgba(67, 207, 124, 0.3)'
           this.analyse = true
           this.mistakeCollection.push(this.currentQuestion)
           // console.log(currentChoice.innerHTML)
         }
       } else if (currentChoice.innerHTML == '复习知识点') {
         // 显示复习知识点
-        // if (!this.reviewed) {
-        //   this.currentQuestionIndex--
-        // } else {
-        //   this.currentQuestionIndex++
-        // }
-        // this.reviewed = !this.reviewed
+        this.$router.push({ name: this.currentQuestion.routeName, query: { subnav: this.currentQuestion.subnav, backshow: true } })
       } else if ((index == this.correctedNumber && correctChoice.innerHTML == '下一题') || index == 99) {
         // 下一题
         this.analyse = false
@@ -633,6 +640,7 @@ export default {
         this.fromCollect = false
       }
       this.mistakeCollection = []
+      this.isCategory = false
       this.fromMistake = false
     },
     // 重置ABCD所有选项及其属性
@@ -834,6 +842,22 @@ export default {
           padding: 90px 0 0 300px;
           color: #fff;
           font-size: 36px;
+          .start {
+            margin: 50px 0 0 425px;
+            border: 4px solid #cccccc;
+            color: #cccccc;
+            width: 250px;
+            height: 75px;
+            line-height: 70px;
+            text-align: center;
+            cursor: not-allowed;
+            transition: all 0.25s;
+          }
+          .startSellected {
+            border: 4px solid #fff;
+            color: #fff;
+            cursor: pointer;
+          }
           .random {
             width: 65px;
             height: fit-content;

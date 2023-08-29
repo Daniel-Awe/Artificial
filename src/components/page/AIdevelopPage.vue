@@ -254,6 +254,7 @@ export default {
     // console.log(this.$route.query.title)
     const subnav = this.$route.query.subnav
     this.switchButton = this.$route.query.switchButton
+
     if (this.$route.query.backshow) {
       this.backshow = this.$route.query.backshow
     }
@@ -268,6 +269,14 @@ export default {
     }
     if (this.clickIndex == 0) {
       this.navItem[0].selected = true
+    }
+    if (subnav === '拓展介绍+') {
+      this.Expanded = false
+      setTimeout(() => {
+        this.ExpandEvent2()
+      }, 100)
+      this.clickIndex = 1
+      this.navItem[1].selected = true
     }
   },
 }
@@ -363,6 +372,7 @@ export default {
         position: relative;
         width: 100%;
         padding: 0px 0 10px 20px;
+        cursor: pointer;
         .tip {
           position: absolute;
           right: 0px;

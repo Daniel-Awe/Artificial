@@ -113,7 +113,7 @@
 
 <script>
 export default {
-  name: 'PostProcessPage',
+  name: 'TextToImgPage',
   props: {
     promptWords: {
       type: Object,

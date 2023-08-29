@@ -114,7 +114,7 @@
 
 <script>
 export default {
-  name: 'PostProcessPage',
+  name: 'ImgToImg',
   props: {
     promptWords: {
       type: Object,

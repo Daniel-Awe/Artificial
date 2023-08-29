@@ -10,6 +10,8 @@ export default [
     options: ['1965年', '1950年', '1970年', '1956年'],
     correct: 'D',
     analyse: '在1956年达特茅斯会议上正式提出使用了人工智能（artificial intelligence，AI）这一术语，标志着人工智能学科的诞生。 ',
+    routeName: 'AIdevelopPage',
+    subnav: '发展历程',
   },
   {
     id: 1,
@@ -22,6 +24,8 @@ export default [
     options: ['监督学习、无监督学习、增强学习', '有监督学习、半监督学习、无监督学习', '强化学习、深度学习、无监督学习', '有监督学习、无监督学习、深度学习'],
     correct: 'A',
     analyse: '人工智能的学习可以分为监督学习，无监督学习和强化学习。',
+    routeName: 'AIdevelopPage',
+    subnav: '拓展介绍',
   },
   {
     id: 2,
@@ -34,6 +38,8 @@ export default [
     options: ['噪声图', '原图', '关键词', '线稿'],
     correct: 'A',
     analyse: '图像编码器会根据图像特征向量把噪声图逐步降噪成一张新的图片。',
+    routeName: 'APIntroPage',
+    subnav: '绘制过程',
   },
   {
     id: 3,
@@ -46,6 +52,8 @@ export default [
     options: ['无监督学习', '监督学习', '强化学习', '终身学习'],
     correct: 'B',
     analyse: '像是人类世界中的考试题一样，随机给模型一个训练示例，然后尝试让他进行生成，之后再拿实际的正确答案进行对比，看看这两者相差多少，计算差值 如果差得多就打破重做，差得少就通过测试这样的流程一直循环上亿次。',
+    routeName: 'APIntroPage',
+    subnav: '使用原理',
   },
   {
     id: 4,
@@ -58,6 +66,8 @@ export default [
     options: ['VAE模型', 'GAN模型', 'CLIP模型', 'Transformer模型'],
     correct: 'C',
     analyse: 'stable diffusion使用的是openAI开源的 CLIP模型对输入的text提取提示词。',
+    routeName: 'APUpgradePage',
+    subnav: '提示词',
   },
   {
     id: 5,
@@ -70,6 +80,8 @@ export default [
     options: ['过滤掉不重要的信息，保留重要的信息，提高速度', '一个隐藏在模型中间的潜在空间', '用来中转存储运行数据', '在扩散模型中进行运算输出'],
     correct: 'A',
     analyse: '维度降低会丢失一部分信息，然而在某些情况下，降维不是件坏事。通过降维我们可以过滤掉一些不太重要的信息你，只保留最重要的信息。',
+    routeName: 'APUpgradePage',
+    subnav: '噪声图',
   },
   {
     id: 6,
@@ -82,6 +94,8 @@ export default [
     options: ['从噪声图像得到无噪声的图像', '从无噪声的图像得到噪声图像', '从一张真实图像得到噪声图像', '从噪声图像得到另一张噪声图像'],
     correct: 'C',
     analyse: '扩散过程是指的对数据逐渐增加高斯噪音直至数据变成随机噪音的过程。',
+    routeName: 'APUpgradePage',
+    subnav: '前向扩散',
   },
   {
     id: 7,
@@ -94,6 +108,8 @@ export default [
     options: ['去噪', '预测无用噪声', '生成真实图片', '将数据噪音化'],
     correct: 'A',
     analyse: '扩散过程是将数据噪音化，那么反向过程就是一个去噪的过程。',
+    routeName: 'APUpgradePage',
+    subnav: '后向扩散',
   },
   {
     id: 8,
@@ -106,6 +122,8 @@ export default [
     options: ['直接在数据库中初始化一个噪声，进行采样', '在原有的基础上加噪声', '对数据进行逐渐增加高斯噪音直至变成随机噪音的过程', '在生成图像的过程中进行采样'],
     correct: 'A',
     analyse: '文生图就是直接在数据库中初始化一个噪声，进行采样。',
+    routeName: 'APUpgradePage',
+    subnav: '采样图',
   },
   {
     id: 9,
@@ -118,6 +136,8 @@ export default [
     options: ['提取提示词', '进行图像编码', '提供噪声图', '预测去噪图像表示'],
     correct: 'D',
     analyse: 'U-Net 的输出是噪声的残差，用于通过程序算法计算去噪的潜在图像表示。',
+    routeName: 'APUpgradePage',
+    subnav: 'U-Net模型',
   },
   {
     id: 10,
@@ -130,6 +150,8 @@ export default [
     options: ['图像特征向量', '随机噪声图', '关键词', '图像编码器'],
     correct: 'C',
     analyse: '第一步是输入关键词，然后关键词会被ai转换成图像特征向量。',
+    routeName: 'APIntroPage',
+    subnav: '绘制过程',
   },
   {
     id: 11,
@@ -142,6 +164,8 @@ export default [
     options: ['将关键词转化为图像特征向量', '增加高斯噪声到图像上', '生成新的噪声图像', '编码器和解码器的训练'],
     correct: 'B',
     analyse: '扩散过程是指的对数据逐渐增加高斯噪音直至数据变成随机噪音的过程。',
+    routeName: 'APUpgradePage',
+    subnav: '前向扩散',
   },
   {
     id: 12,
@@ -154,6 +178,8 @@ export default [
     options: ['语言模型', '编码器', '扩散模型', '解码器'],
     correct: 'B',
     analyse: '从图生图的流程图中得出。',
+    routeName: 'APUpgradePage',
+    subnav: '采样图',
   },
   {
     id: 13,
@@ -166,6 +192,8 @@ export default [
     options: ['生成图像特征向量', '提供关键词和语义叙述', '训练模型，让其学会逻辑和风格', '生成随机噪声图像'],
     correct: 'C',
     analyse: '用绝对的数量让模型偏向我们需要的绘画风格。',
+    routeName: 'APIntroPage',
+    subnav: '使用原理',
   },
   {
     id: 14,
@@ -178,6 +206,8 @@ export default [
     options: ['生成噪声图', '提供关键词和图像特征', '训练编码器和解码器', '生成随机噪声图像'],
     correct: 'B',
     analyse: 'stable diffusion使用的是openAI开源的 CLIP模型对输入的text提取提示词。',
+    routeName: 'APUpgradePage',
+    subnav: '提示词',
   },
   {
     id: 15,
@@ -190,6 +220,8 @@ export default [
     options: ['DALL-E', 'Midjourney', 'Latent Diffusion Models', 'UNetModel'],
     correct: 'C',
     analyse: 'Stable diffusion是一种基于潜在扩散模型（Latent Diffusion Models）的文本到图像生成模型。',
+    routeName: 'SDIntroPage',
+    subnav: '基本介绍',
   },
   {
     id: 16,
@@ -202,6 +234,8 @@ export default [
     options: ['文字编辑器', '图片编辑器', '图片生成应用', '基于Stable Diffusion的可视化应用'],
     correct: 'D',
     analyse: 'Stable Diffusion Web UI 是一个基于 Stable Diffusion 的基础应用，将Stable Diffusion的操作可视化。',
+    routeName: 'SDIntroPage',
+    subnav: '基本介绍',
   },
   {
     id: 17,
@@ -214,6 +248,8 @@ export default [
     options: ['Java和C++', 'Python和TensorFlow', 'Python和gradio', 'JavaScript和HTML'],
     correct: 'C',
     analyse: 'Stable Diffusion Web UI 是利用 gradio 模块搭建出交互程序，主要使用python ，JavaScript，HTML，css进行开发。',
+    routeName: 'SDUpgradePage',
+    subnav: '基本介绍+',
   },
   {
     id: 18,
@@ -226,6 +262,8 @@ export default [
     options: ['Linux', 'Windows或Mac', 'iOS', 'Android'],
     correct: 'B',
     analyse: '只能在Windows或者Mac电脑的系统上运行。',
+    routeName: 'SDIntroPage',
+    subnav: '本地搭建',
   },
   {
     id: 19,
@@ -238,5 +276,7 @@ export default [
     options: ['stable-diffusion-webui/models/stable-diffusion/', 'stable-diffusion-webui/model/', 'stable-diffusion-webui/', 'stable-diffusion-webui/data/'],
     correct: 'A',
     analyse: '下载完model后把model解压，粘贴到stable diffusion-webui/models/stable diffusion/底下。',
+    routeName: 'SDInstallPage',
+    subnav: '下载model',
   },
 ]

@@ -95,7 +95,7 @@ export default {
               left: '730px',
               top: '720px',
               routeName: 'AIdevelopPage',
-              subnav: '拓展介绍',
+              subnav: '拓展介绍+',
             },
           ],
         },
@@ -325,7 +325,7 @@ export default {
               left: '1070px',
               top: '690px',
               routeName: 'SDUpgradePage',
-              subnav: '基本介绍',
+              subnav: '基本介绍+',
             },
             {
               title: '文生图',

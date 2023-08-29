@@ -269,6 +269,13 @@ export default {
     this.subtitle = this.$route.query.subtitle
     // console.log(this.$route.query.title)
     const subnav = this.$route.query.subnav
+    console.log(this.$route.query.subnav)
+    if (subnav == '基本介绍+') {
+      this.Expanded = false
+      setTimeout(() => {
+        this.ExpandEvent2()
+      }, 100)
+    }
     if (this.$route.query.backshow) {
       this.backshow = this.$route.query.backshow
     }
