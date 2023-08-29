@@ -3,7 +3,7 @@
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
     <!-- 顶部导航栏 -->
-    <TopNavigationBar :sub="PA" :title="title"></TopNavigationBar>
+    <TopNavigationBar :sub="PA" :title="title" :backShow="backshow"></TopNavigationBar>
     <div class="body" :style="{ left: Index + 'px' }">
       <!-- 绘画辅助 -->
       <div class="sec">
@@ -107,6 +107,8 @@ export default {
     return {
       title: '实际运用',
       subtitle: '',
+      // 返回
+      backshow: false,
       // 绘制辅助
       leftArrowImg: 'https://img.js.design/assets/element/js_L7tlPnv9CVk/image/add872fecfafe42935cdbea099a7749ce09d8c80.png',
       rightArrowImg: 'https://img.js.design/assets/element/js_uxwwr7ZwCE1/image/a87dac7e9f312930e983211ccb95ceba33a31f36.png',
@@ -246,7 +248,9 @@ export default {
     this.subtitle = this.$route.query.subtitle
     const subnav = this.$route.query.subnav
     this.switchButton = this.$route.query.switchButton
-
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {
       this.navItem[i].selected = false

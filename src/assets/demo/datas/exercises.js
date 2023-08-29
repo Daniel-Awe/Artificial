@@ -153,7 +153,7 @@ export default [
     content: '以下哪个模型主要负责将输入图像转化为高语义意义的缩减采样表示并降噪？',
     options: ['语言模型', '编码器', '扩散模型', '解码器'],
     correct: 'B',
-    analyse: '对原有图片生成的噪声图。',
+    analyse: '从图生图的流程图中得出。',
   },
   {
     id: 13,
@@ -189,7 +189,7 @@ export default [
     content: 'Stable Diffusion是一种基于什么模型的文本到图像生成模型？',
     options: ['DALL-E', 'Midjourney', 'Latent Diffusion Models', 'UNetModel'],
     correct: 'C',
-    analyse: '',
+    analyse: 'Stable diffusion是一种基于潜在扩散模型（Latent Diffusion Models）的文本到图像生成模型。',
   },
   {
     id: 16,
@@ -201,7 +201,7 @@ export default [
     content: 'Stable Diffusion Web UI是一个什么样的应用？',
     options: ['文字编辑器', '图片编辑器', '图片生成应用', '基于Stable Diffusion的可视化应用'],
     correct: 'D',
-    analyse: '',
+    analyse: 'Stable Diffusion Web UI 是一个基于 Stable Diffusion 的基础应用，将Stable Diffusion的操作可视化。',
   },
   {
     id: 17,
@@ -213,7 +213,7 @@ export default [
     content: 'Stable Diffusion Web UI使用哪种编程语言和模块进行开发？',
     options: ['Java和C++', 'Python和TensorFlow', 'Python和gradio', 'JavaScript和HTML'],
     correct: 'C',
-    analyse: '',
+    analyse: 'Stable Diffusion Web UI 是利用 gradio 模块搭建出交互程序，主要使用python ，JavaScript，HTML，css进行开发。',
   },
   {
     id: 18,
@@ -225,7 +225,7 @@ export default [
     content: 'Stable Diffusion需要在哪种操作系统上运行？',
     options: ['Linux', 'Windows或Mac', 'iOS', 'Android'],
     correct: 'B',
-    analyse: '',
+    analyse: '只能在Windows或者Mac电脑的系统上运行。',
   },
   {
     id: 19,
@@ -237,6 +237,6 @@ export default [
     content: '在安装过程中，你需要将下载的模型文件放在哪个目录下？',
     options: ['stable-diffusion-webui/models/stable-diffusion/', 'stable-diffusion-webui/model/', 'stable-diffusion-webui/', 'stable-diffusion-webui/data/'],
     correct: 'A',
-    analyse: '',
+    analyse: '下载完model后把model解压，粘贴到stable diffusion-webui/models/stable diffusion/底下。',
   },
 ]

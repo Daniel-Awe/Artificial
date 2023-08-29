@@ -3,7 +3,7 @@
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
     <!-- 顶部导航栏 -->
-    <TopNavigationBar :sub="'APUpgrade'" :title="title"></TopNavigationBar>
+    <TopNavigationBar :sub="'APUpgrade'" :title="title" :backShow="backshow"></TopNavigationBar>
     <div class="body">
       <div class="bigbox">
         <div class="cueword part">
@@ -87,6 +87,8 @@ export default {
     return {
       title: 'AI绘画',
       subtitle: '',
+      // 返回
+      backshow: false,
       // 提示词
       CueWord: [
         {
@@ -486,6 +488,9 @@ export default {
     // 获取传过来的值，标题以及副标题
     this.subtitle = this.$route.query.subtitle
     const subnav = this.$route.query.subnav
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {
       this.navItem[i].selected = false

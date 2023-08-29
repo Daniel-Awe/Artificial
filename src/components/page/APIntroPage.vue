@@ -3,7 +3,7 @@
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
     <!-- 顶部导航栏 -->
-    <TopNavigationBar :sub="'APIntro'" :title="title" style="z-index: 999"></TopNavigationBar>
+    <TopNavigationBar :sub="'APIntro'" :title="title" style="z-index: 999" :backShow="backshow"></TopNavigationBar>
     <!-- backButton -->
 
     <!-- body -->
@@ -70,7 +70,8 @@ export default {
       subtitle: '',
       options: undefined,
       switchButton: false,
-
+      // 返回
+      backshow: false,
       // 头部导航的返回按钮显示
       TopnavBackshow: false,
       // 绘制过程数据
@@ -533,7 +534,9 @@ export default {
     this.subtitle = this.$route.query.subtitle
     const subnav = this.$route.query.subnav
     this.switchButton = this.$route.query.switchButton
-
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {
       this.navItem[i].selected = false

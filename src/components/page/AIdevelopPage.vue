@@ -3,7 +3,7 @@
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
     <!-- 顶部导航栏 -->
-    <TopNavigationBar :title="title" :sub="'AI'"></TopNavigationBar>
+    <TopNavigationBar :title="title" :sub="'AI'" :backShow="backshow"></TopNavigationBar>
 
     <div class="body" :style="{ left: Index + 'px' }">
       <!-- 发展过程 -->
@@ -79,6 +79,8 @@ export default {
       title: '人工智能',
       subtitle: '',
       switchButton: false,
+      // 返回
+      backshow: false,
       // 箭头的坐标
       arrowdatas: [
         {
@@ -252,6 +254,9 @@ export default {
     // console.log(this.$route.query.title)
     const subnav = this.$route.query.subnav
     this.switchButton = this.$route.query.switchButton
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
 
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {

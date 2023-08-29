@@ -419,7 +419,9 @@ export default {
     // console.log(this.$route.query.title)
     const subnav = this.$route.query.subnav
     this.switchButton = this.$route.query.switchButton
-
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {
       this.navItem[i].selected = false
@@ -440,7 +442,8 @@ export default {
   width: 1920px;
   height: 1080px;
   position: relative;
-  overflow: hidden; z-index: 10;
+  overflow: hidden;
+  z-index: 10;
   background: transparent;
 }
 

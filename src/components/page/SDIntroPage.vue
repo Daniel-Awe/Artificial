@@ -3,7 +3,7 @@
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
     <!-- 顶部导航栏 -->
-    <TopNavigationBar :title="title" :sub="'SDIntro'"></TopNavigationBar>
+    <TopNavigationBar :title="title" :sub="'SDIntro'" :backShow="backshow"></TopNavigationBar>
 
     <!-- 主题内容 -->
     <div class="body" :style="{ left: Index + 'px' }">
@@ -77,6 +77,8 @@ export default {
     return {
       title: 'stable diffusion',
       subtitle: '',
+      // 返回
+      backshow: false,
       // 基本介绍
       introDatas: [
         {
@@ -187,7 +189,9 @@ export default {
     this.subtitle = this.$route.query.subtitle
     // console.log(this.$route.query.title)
     const subnav = this.$route.query.subnav
-
+    if (this.$route.query.backshow) {
+      this.backshow = this.$route.query.backshow
+    }
     // 根据传来的副标题，决定显示的第几页
     for (var i = 0; i < this.navItem.length; i++) {
       this.navItem[i].selected = false
