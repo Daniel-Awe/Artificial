@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="right" style="transition: all 0.25s">
-            <BoxWord class="boxword" :boxword="this.SamplePlot.text2" :boxWidth="500" style="position: absolute; transition: all 0.25s; right: -500px; top: 50px"></BoxWord>
+            <BoxWord class="boxword" :boxword="this.SamplePlot.text2" :boxWidth="500" style="position: absolute; transition: all 0.25s; top: 50px"></BoxWord>
           </div>
         </div>
         <div class="unetmodel part" style="left: 120px; top: 100px; display: flex">

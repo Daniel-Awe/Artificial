@@ -119,11 +119,14 @@ export default {
       type: Object,
       default: undefined,
     },
+    renew: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       tipsWords: [],
-      currentIndex: 0,
       isPic: false,
       isVid: false,
       selectedItem: '',
@@ -222,6 +225,20 @@ export default {
       saclevolume: 7,
       seedvolume: 35,
     }
+  },
+  watch: {
+    promptWords: {
+      handler(newVal, oldVal) {
+        // 在 promptWords 任何属性发生变化时触发的函数
+        if (newVal !== oldVal) {
+          this.currentIndex = 0 // 将 currentIndex 设置为 0
+          this.isPic = false
+          this.isVid = false
+          this.selectedItem = ''
+        }
+      },
+      deep: true, // 使用深度监听
+    },
   },
   methods: {
     handleSelectChange(value) {

@@ -29,7 +29,7 @@
       <div class="navChoice">
         <div class="navButton" v-for="(nav, id) in this.TopNav" :key="id" :class="{ choiced: currentNav === id }" @click="navClick(id)">{{ nav.nav }}</div>
       </div>
-      <TextToImgPage :promptWords="this.promptWords" v-if="this.currentoption == 'txt'"></TextToImgPage>
+      <TextToImgPage :promptWords="this.promptWords" :renew="renew" v-if="this.currentoption == 'txt'"></TextToImgPage>
       <ImgToImg :promptWords="this.promptWords" v-if="this.currentoption == 'img'"></ImgToImg>
       <PostProcessPage></PostProcessPage>
     </div>
@@ -218,12 +218,15 @@ export default {
         },
       ],
       promptWords: [],
+      renew: false,
     }
   },
   methods: {
     handleSelectChange(value) {
       this.currentModel = value
-      console.log(value)
+      this.renew = true
+
+      console.log('value' + value)
       this.propmt()
     },
     propmt() {
