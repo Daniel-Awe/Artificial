@@ -1,11 +1,22 @@
 <template>
   <div class="bigbox">
+    <!-- 上半部分 -->
+
     <div class="inputChoiceBox">
       <div class="inputBox">
         <div class="first">
-          <el-select class="promptWords" v-model="selectedItem" :placeholder="selectedItem || '请选择内容'"> <el-option :label="item.content" :value="item.content" v-for="(item, id) in promptWords" :key="id" @click="handleSelectChange(item.content)"></el-option> </el-select>
-
-          <textarea placeholder="反向提示词（按Ctrl+Enter或Alt+Enter开始生成）"></textarea>
+          <div class="smtitle">正向提示词（Positive prompt words）</div>
+          <div>
+            <el-select class="promptWords" size="large" v-model="selectedItem" :placeholder="selectedItem || '正向提示词（按Ctrl+Enter或Alt+Enter开始生成）'">
+              <el-option class="custom-option" :label="item.content" :value="item.content" v-for="(item, id) in promptWords" :key="id" @click="handleSelectChange(item.content)"></el-option>
+            </el-select>
+          </div>
+          <div class="smtitle" style="padding-top: 17px">反向提示词（Reverse prompt words）</div>
+          <div>
+            <el-select class="reverseWords" size="large" v-model="reverseItem" :placeholder="reverseItem || '反向提示词（按Ctrl+Enter或Alt+Enter开始生成）'">
+              <el-option :label="item.content" :value="item.content" v-for="(item, id) in reverseWords" :key="id"></el-option>
+            </el-select>
+          </div>
         </div>
       </div>
       <div class="submitBox">
@@ -15,6 +26,8 @@
         </div>
       </div>
     </div>
+    <!-- 下半部分 -->
+
     <div class="reBox">
       <div class="regulateBox">
         <div class="stepsBox">
@@ -96,12 +109,12 @@
         </div>
       </div>
       <div class="resultBox">
-        <div class="picBox" style="width: 98%; height: 55%; border-radius: 10px; border: 1px solid rgba($color: #ccc, $alpha: 0.5); box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2); padding: 15px" v-if="!this.isVid">
-          <div style="color: #808080" v-if="!this.isPic && !this.isVid">照片</div>
-          <img :src="promptWords[this.currentIndex].pic[this.stepsIndex]" style="height: 100%" v-if="this.isPic" alt="" />
+        <div class="picBox" v-if="!this.isVid">
+          <div style="color: #808080; vertical-align: center; text-align: center" v-if="!this.isPic && !this.isVid">- 照片 -</div>
+          <!-- <img :src="promptWords[this.currentIndex].pic[this.stepsIndex]" style="height: 100%" v-if="this.isPic" alt="" /> -->
         </div>
         <video :src="promptWords[this.currentIndex].video[this.stepsIndex]" style="width: 100%" autoplay v-if="this.isVid"></video>
-        <div class="postpicture">
+        <div class="postpicture" v-if="!this.isPic && !this.isVid">
           <div class="postbox" v-for="(item, id) in postPicture" :key="id">
             {{ item.content }}
           </div>
@@ -123,12 +136,22 @@ export default {
       type: Boolean,
       default: true,
     },
+    reverseWords: {
+      type: Object,
+      default: undefined,
+    },
   },
   data() {
     return {
+      // 反向提示词
+      reverseItem: '',
+
       tipsWords: [],
+      // 是否显示图片
       isPic: false,
+      // 是否显示视频
       isVid: false,
+      // 正向提示词
       selectedItem: '',
       postPicture: [
         {
@@ -147,6 +170,7 @@ export default {
           content: '发送到openOutpaint',
         },
       ],
+      // 参数
       radio2: 0,
       stepsvolume: 30,
       stepsIndex: 0,
@@ -218,6 +242,7 @@ export default {
           choice: 'DUniPC',
         },
       ],
+
       widthvolume: 573,
       heightvolume: 528,
       widthcount: 1,
@@ -242,7 +267,6 @@ export default {
   },
   methods: {
     handleSelectChange(value) {
-      this.isPic = true
       this.isVid = false
       // 选择改变时触发，将选中内容赋值给 selectedItem
       this.selectedItem = value
@@ -266,8 +290,9 @@ export default {
       }
     },
     videoClick() {
-      this.isPic = false
-      this.isVid = true
+      if (this.selectedItem != '') {
+        this.isVid = true
+      }
     },
   },
 }
@@ -279,36 +304,47 @@ export default {
   width: 100% !important;
   border: 1px solid rgba($color: #808080, $alpha: 0.3);
   border-radius: 10px;
-  padding: 0 15px;
+  padding: 10px 15px;
   .inputChoiceBox {
     display: flex;
-    height: 25%;
+    height: 25.5%;
     padding-top: 0px;
 
     .inputBox {
       width: 77%;
       .first {
-        padding-top: 10px;
+        .smtitle {
+          font-size: 18px;
+          color: #808080;
+          padding: 5px 0 8px 0;
+        }
         .promptWords {
-          width: 300px;
+          width: 350px;
           border: 1px solid rgba($color: #ccc, $alpha: 0.5);
           box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
           margin-bottom: 10px;
         }
       }
-      textarea {
-        width: 100%;
-        margin: 10px 10px 10px 0;
-        padding: 10px;
-        height: 100px;
-        resize: none; /* 禁用调整大小功能 */
-        border-radius: 10px;
+      .reverseWords {
+        width: 550px;
         border: 1px solid rgba($color: #ccc, $alpha: 0.5);
         box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
-        /* 将文本对齐方式设置为左上角 */
-        text-align: left;
-        vertical-align: top;
+        margin-bottom: 10px;
       }
+
+      // textarea {
+      //   width: 100%;
+      //   margin: 10px 10px 10px 0;
+      //   padding: 10px;
+      //   height: 100px;
+      //   resize: none; /* 禁用调整大小功能 */
+      //   border-radius: 10px;
+      //   border: 1px solid rgba($color: #ccc, $alpha: 0.5);
+      //   box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
+      //   /* 将文本对齐方式设置为左上角 */
+      //   text-align: left;
+      //   vertical-align: top;
+      // }
     }
     .submitBox {
       width: 23%;
@@ -397,7 +433,17 @@ export default {
     .resultBox {
       width: 47.5%;
       margin: 15px;
-      padding: 15px;
+      margin-top: 30px;
+      padding: 10px;
+      .picBox {
+        width: 100%;
+        height: 500px;
+        line-height: 500px;
+        border-radius: 15px;
+        border: 1px solid rgba($color: #ccc, $alpha: 0.5);
+        box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+      }
       .postpicture {
         margin-top: 15px;
         display: flex;

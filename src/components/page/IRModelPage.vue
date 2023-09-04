@@ -19,7 +19,7 @@
             <el-select class="content-box" v-model="currentModel" :placeholder="currentModel || '请选择内容'" @change="handleSelectChange"> <el-option :label="item.content" :value="item.content" v-for="(item, id) in SdModel" :key="id"></el-option> </el-select>
           </div>
           <div class="content">
-            <el-select class="content-box" v-model="currentModel" :placeholder="currentModel || '请选择内容'">
+            <el-select class="content-box" v-model="currentModel2" :placeholder="currentModel2 || '请选择内容'">
               <el-option :label="item.content" :value="item.content" v-for="(item, id) in SdModel" :key="id"></el-option>
             </el-select>
           </div>
@@ -29,9 +29,9 @@
       <div class="navChoice">
         <div class="navButton" v-for="(nav, id) in this.TopNav" :key="id" :class="{ choiced: currentNav === id }" @click="navClick(id)">{{ nav.nav }}</div>
       </div>
-      <TextToImgPage :promptWords="this.promptWords" :renew="renew" v-if="this.currentoption == 'txt'"></TextToImgPage>
-      <ImgToImg :promptWords="this.promptWords" v-if="this.currentoption == 'img'"></ImgToImg>
-      <PostProcessPage></PostProcessPage>
+      <TextToImgPage :promptWords="this.promptWords" :reverseWords="reverseWords" :renew="renew" v-if="this.currentoption === 'txt'"></TextToImgPage>
+      <ImgToImg :promptWords="this.promptWords" :reverseWords="reverseWords" v-if="this.currentoption === 'img'"></ImgToImg>
+      <PostProcessPage v-if="(this.currentoption != 'txt') & (this.currentoption != 'img')"></PostProcessPage>
     </div>
   </div>
 </template>
@@ -51,6 +51,12 @@ export default {
     return {
       placeholder: '请选择',
       CLIPvolume: 10,
+      // 反向提示词
+      reverseWords: [
+        {
+          content: '(worst quality:2,low quality:2),(zombie, sketch, interloacked fingers,comic),',
+        },
+      ],
 
       SdModel: [
         {
@@ -127,6 +133,7 @@ export default {
         },
       ],
       currentModel: '',
+      currentModel2: '',
 
       currentoption: 'txt',
       currentNav: 0,
@@ -245,6 +252,7 @@ export default {
     navClick(id) {
       this.currentNav = id
       this.currentoption = this.TopNav[this.currentNav].content
+
       this.$router.push({ name: this.TopNav[this.currentNav].routeName }) // 使用 router.push
       this.propmt()
       console.log(this.TopNav[this.currentNav].content)

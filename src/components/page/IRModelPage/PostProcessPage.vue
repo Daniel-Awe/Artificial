@@ -4,13 +4,13 @@
       <div class="regulateBox">
         <div class="picture">
           <input ref="fileInput" type="file" style="display: none" @change="handleFileSelected" />
-          <div class="picBox" style="width: 100%; height: 350px; line-height: 350px; text-align: center; border-radius: 10px; border: 1px solid rgba($color: #ccc, $alpha: 0.5); box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2); padding: 15px; cursor: pointer; margin: 15px 0" @click="openFilePicker">
+          <div class="pictrueBox" @click="openFilePicker">
             <div style="color: #808080" v-if="!selectedImage">
               <span>拖放图片至此处</span>
               <span><font style="color: #808080">- 或 -</font> </span>点击上传
             </div>
             <div>
-              <img v-if="selectedImage" style="height: 320px" :src="selectedImage" alt="Selected Image" />
+              <img v-if="selectedImage" style="width: 300px" :src="selectedImage" alt="Selected Image" />
             </div>
             <!-- <img :src="promptWords[this.currentIndex].pic[this.stepsIndex]" style="height: 100%" v-if="this.isPic" alt="" /> -->
           </div>
@@ -22,7 +22,7 @@
             <input type="number" v-model="zoomvolume" class="inputNumber" />
           </div>
           <div class="zoomRange">
-            <input type="range" class="volume" v-model="zoomvolume" min="0" max="10" @input="updateVolume" />
+            <input type="range" class="volume" v-model="zoomvolume" min="0" step="0.04" max="5" @input="updateVolume" />
           </div>
         </div>
         <div class="magnifyBox">
@@ -32,7 +32,7 @@
             </div>
             <div style="margin: 4px 0 4px 0">
               <div class="content">
-                <el-select class="amplify" v-model="amplifyalgo" :placeholder="amplifyalgo || '请选择内容'" @change="handleSelectChange"> <el-option :label="item.content" :value="item.content" v-for="(item, id) in amplifyalgoData" :key="id"></el-option> </el-select>
+                <el-select class="amplify" style="width: 800px" size="large" v-model="amplifyalgo" :placeholder="amplifyalgo || '请选择内容'" @change="handleSelectChange"> <el-option :label="item.content" :value="item.content" v-for="(item, id) in amplifyalgoData" :key="id"></el-option> </el-select>
               </div>
             </div>
           </div>
@@ -43,7 +43,9 @@
               <div class="tips">放大算法2</div>
             </div>
             <div class="content">
-              <el-select class="content-box" v-model="amplifyalgo" :placeholder="amplifyalgo || '请选择内容'" @change="handleSelectChange"> <el-option :label="item.content" :value="item.content" v-for="(item, id) in amplifyalgoData" :key="id"></el-option> </el-select>
+              <el-select class="content-box" style="width: 300px" size="large" v-model="amplifyalgo2" :placeholder="amplifyalgo2 || '请选择内容'" @change="handleSelectChange">
+                <el-option :label="item.content" :value="item.content" v-for="(item, id) in amplifyalgoData" :key="id"></el-option>
+              </el-select>
             </div>
           </div>
           <div class="strengthBox">
@@ -51,7 +53,7 @@
               <div class="tips">放大算法2强度</div>
               <input type="number" v-model="zoomvolume2" class="inputNumber" />
             </div>
-            <input type="range" class="volume" v-model="zoomvolume2" min="0" max="10" @input="updateVolume" />
+            <input type="range" class="volume" v-model="zoomvolume2" min="0" step="0.1" max="10" @input="updateVolume" />
           </div>
         </div>
         <div class="gfpganBox">
@@ -92,17 +94,24 @@
         </div>
       </div>
       <div class="resultBox">
-        <div class="picBox" style="width: 100%; height: 350px; line-height: 350px; text-align: center; border-radius: 10px; border: 1px solid rgba($color: #ccc, $alpha: 0.5); box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2); padding: 15px; cursor: pointer; margin: 15px 0">
+        <div class="picBox">
           <div style="color: #808080">
-            <span>图片</span>
+            <span v-if="!this.isPic">- 图片 -</span>
+            <img v-if="this.isPic" class="resultImg" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="fangda()" />
           </div>
-          <video :src="promptWords[this.currentIndex].video[this.stepsIndex]" style="width: 100%" autoplay v-if="this.isVid"></video>
         </div>
         <div class="postpicture">
           <div class="postbox" v-for="(item, id) in postPicture" :key="id">
             {{ item.content }}
           </div>
         </div>
+      </div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal" v-if="showModal">
+      <div class="modal-content">
+        <span class="close" @click="showModal = false">x</span>
+        <img class="resultImg2" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="showModal = false" />
       </div>
     </div>
   </div>
@@ -114,12 +123,18 @@ export default {
 
   data() {
     return {
+      showModal: false, // 控制是否显示模态框
+      isPic: false,
       tipsWords: [],
-      amplifyalgo: '',
+      amplifyalgo: 'None',
+      amplifyalgo2: 'None',
+      // 获取的图片大小
       selectedImage: null,
+      // 最终处理结果
+      resultImg: null,
       amplifyalgoData: [
         {
-          content: '无',
+          content: 'None',
         },
         {
           content: 'Lanczos',
@@ -196,8 +211,14 @@ export default {
       this.amplifyalgo = value
     },
     videoClick() {
-      this.isPic = false
-      this.isVid = true
+      this.isPic = true
+      this.resultImg = this.selectedImage
+      // 放大
+      setTimeout(() => {
+        const resultImg = document.querySelector('.resultImg')
+        resultImg.style.width = 300 * this.zoomvolume + 'px'
+        // console.log(resultImg)
+      }, 200)
     },
     openFilePicker() {
       // 触发文件选择框
@@ -214,12 +235,16 @@ export default {
         this.selectedImage = URL.createObjectURL(selectedFile)
       }
     },
+    fangda() {
+      this.showModal = true
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .bigbox {
+  position: relative;
   height: 920px !important;
   width: 100% !important;
   border: 1px solid rgba($color: #808080, $alpha: 0.3);
@@ -230,6 +255,19 @@ export default {
     .regulateBox {
       width: 56%;
       .picture {
+        .pictrueBox {
+          width: 100%;
+          height: 350px;
+          line-height: 350px;
+          text-align: center;
+          border-radius: 10px;
+          border: 1px solid rgba($color: #ccc, $alpha: 0.5);
+          box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
+          padding: 15px;
+          cursor: pointer;
+          margin: 15px 0;
+          overflow: hidden;
+        }
         .submit {
           width: 100%;
           height: 65px;
@@ -312,8 +350,21 @@ export default {
     }
     .resultBox {
       width: 47.5%;
-      margin: 15px;
-      padding: 15px;
+      margin: 15px 10px 0 15px;
+      padding-left: 15px;
+      .picBox {
+        width: 100%;
+        height: 500px;
+        line-height: 465px;
+        text-align: center;
+        border-radius: 10px;
+        border: 1px solid rgba($color: #ccc, $alpha: 0.5);
+        box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        margin: 15px 0;
+        margin-top: 0;
+        overflow: auto;
+      }
       .postpicture {
         display: flex;
         justify-content: space-between;
@@ -334,6 +385,34 @@ export default {
         cursor: pointer;
       }
     }
+  }
+  // 模态框
+  .modal {
+    position: fixed;
+
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .close {
+    position: absolute;
+    top: 100px;
+    right: -50px;
+    color: white;
+    font-size: 48px;
+
+    cursor: pointer;
   }
 }
 </style>
