@@ -108,17 +108,11 @@
       </div>
     </div>
     <!-- 模态框 -->
-    <div class="modal" v-if="showModal">
-      <div class="modal-content">
-        <span class="close" @click="showModal = false">×</span>
-        <div class="image-container">
-          <img class="resultImg2" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="showModal = false" />
-        </div>
-      </div>
-    </div>
+
     <div class="modal" v-if="showModal">
       <div class="modal-content">
         <span class="close" @click="showModal = false">x</span>
+        <img class="resultImg2" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="showModal = false" />
       </div>
     </div>
   </div>
@@ -394,6 +388,15 @@ export default {
     }
   }
   // 模态框
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
   .modal-content {
     position: absolute;
     top: 50%;
