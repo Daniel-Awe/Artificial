@@ -110,8 +110,15 @@
     <!-- 模态框 -->
     <div class="modal" v-if="showModal">
       <div class="modal-content">
+        <span class="close" @click="showModal = false">×</span>
+        <div class="image-container">
+          <img class="resultImg2" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="showModal = false" />
+        </div>
+      </div>
+    </div>
+    <div class="modal" v-if="showModal">
+      <div class="modal-content">
         <span class="close" @click="showModal = false">x</span>
-        <img class="resultImg2" style="cursor: pointer" :src="resultImg" alt="Selected Image" @click="showModal = false" />
       </div>
     </div>
   </div>
@@ -387,17 +394,6 @@ export default {
     }
   }
   // 模态框
-  .modal {
-    position: fixed;
-
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-
   .modal-content {
     position: absolute;
     top: 50%;
@@ -407,12 +403,18 @@ export default {
 
   .close {
     position: absolute;
-    top: 100px;
-    right: -50px;
-    color: white;
-    font-size: 48px;
-
+    top: -12px;
+    right: -30px;
+    color: #fff;
+    font-size: 30px;
     cursor: pointer;
+  }
+
+  /* 图片容器样式 */
+  .image-container {
+    max-height: 80vh; /* 设置最大高度，超出部分将滚动 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+    text-align: center; /* 如果需要居中图片 */
   }
 }
 </style>

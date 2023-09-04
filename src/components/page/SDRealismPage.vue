@@ -83,7 +83,18 @@
     </div>
     <!-- 问号图标 -->
     <div class="questionMark">
-      <img :src="questionMark" alt="" style="width: 42px; position: absolute; top: 115px; right: 25px" />
+      <img :src="questionMark" alt="" style="width: 42px; position: absolute; top: 115px; right: 25px; cursor: pointer" @click="this.showModal = true" />
+    </div>
+    <!-- 体验 -->
+    <div class="experience" @click="this.$router.push({ name: 'IRModelPage', query: { option: this.clickIndex, subnav: this.route[this.clickIndex].push } })">Experience</div>
+    <!-- 流程图 -->
+    <div class="modal" v-if="showModal">
+      <div class="modal-content">
+        <span class="close" @click="showModal = false">×</span>
+        <div class="image-container">
+          <img :src="this.FlowChart[this.clickIndex].pic" alt="Image" />
+        </div>
+      </div>
     </div>
     <BottomNavigationBar @clickIndex="handleIndex" :navItem="this.navItem" :gap="231" :currentIndex="this.clickIndex"></BottomNavigationBar>
   </div>
@@ -253,6 +264,20 @@ export default {
         },
       ],
 
+      // 流程图
+      FlowChart: [
+        {
+          pic: require('../../assets/pictures/FlowChart/文生图.jpeg'),
+        },
+        {
+          pic: require('../../assets/pictures/FlowChart/图生图.jpeg'),
+        },
+        {
+          pic: require('../../assets/pictures/FlowChart/后期处理.jpeg'),
+        },
+      ],
+      showModal: false, // 控制是否显示模态框
+
       // 底部导航栏
       navItem: [
         { label: '文生图', selected: true },
@@ -260,6 +285,19 @@ export default {
         { label: '图片后期', selected: false },
       ],
       clickIndex: 0,
+
+      // 跳转experience
+      route: [
+        {
+          push: 'txt',
+        },
+        {
+          push: 'img',
+        },
+        {
+          push: 'txt',
+        },
+      ],
     }
   },
   computed: {
@@ -390,5 +428,51 @@ export default {
     opacity: 0;
     transition: all 0.25s;
   }
+}
+.experience {
+  top: 115px;
+  right: 105px;
+  width: 100px;
+  position: absolute;
+  cursor: pointer;
+  color: #e5e5e5;
+  font-size: 24px !important;
+  &:hover {
+    color: skyblue;
+  }
+}
+/* 模态框样式 */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close {
+  position: absolute;
+  top: -12px;
+  right: -30px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* 图片容器样式 */
+.image-container {
+  width: 100%;
+  max-height: 80vh; /* 设置最大高度，超出部分将滚动 */
+  overflow-y: auto; /* 添加垂直滚动条 */
+  text-align: center; /* 如果需要居中图片 */
 }
 </style>

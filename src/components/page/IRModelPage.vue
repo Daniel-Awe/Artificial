@@ -31,7 +31,7 @@
       </div>
       <TextToImgPage :promptWords="this.promptWords" :reverseWords="reverseWords" :renew="renew" v-if="this.currentoption === 'txt'"></TextToImgPage>
       <ImgToImg :promptWords="this.promptWords" :reverseWords="reverseWords" v-if="this.currentoption === 'img'"></ImgToImg>
-      <PostProcessPage v-if="(this.currentoption != 'txt') & (this.currentoption != 'img')"></PostProcessPage>
+      <PostProcessPage v-if="this.currentoption == 'post'"></PostProcessPage>
     </div>
   </div>
 </template>
@@ -255,9 +255,17 @@ export default {
 
       this.$router.push({ name: this.TopNav[this.currentNav].routeName }) // 使用 router.push
       this.propmt()
-      console.log(this.TopNav[this.currentNav].content)
-      console.log(this.currentoption)
+      // console.log(this.TopNav[this.currentNav].content)
+      // console.log(this.currentoption)
     },
+  },
+  created() {
+    var option = this.$route.query.option
+    option = parseInt(option)
+    if (option) {
+      this.currentNav = option
+      this.navClick(option)
+    }
   },
 }
 </script>
