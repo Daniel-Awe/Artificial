@@ -9,3 +9,10 @@ module.exports = defineConfig({
       .loader('html-loader')
   },
 })
+
+module.exports = {
+  publicPath: './',
+  devServer: {
+    port: 8211,
+  },
+}

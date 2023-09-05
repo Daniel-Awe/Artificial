@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import IndexPage from '@/components/page/IndexPage.vue'
 import KnowledgeQuizPage from '../components/page/KnowledgeQuizPage'
@@ -17,7 +17,7 @@ import ImgToImgPage from '../components/page/IRModelPage/ImgToImg.vue'
 import PostProcessPage from '../components/page/IRModelPage/PostProcessPage'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes: [
     {
       path: '/',

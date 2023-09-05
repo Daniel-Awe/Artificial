@@ -16,7 +16,7 @@
     <TipsBox v-for="(item, id) in ButtonTips" :key="id" class="tipsbox" :content="item.content" :style="{ left: item.left, top: item.top, opacity: item.show }" v-show="item.has"></TipsBox>
     <!-- TopIcons -->
     <div class="topicons">
-      <img :src="musicIcon" alt="" @click="this.$router.push({ name: 'IRModelPage' })" style="width: 65px; position: absolute; left: 70px; top: 20px" />
+      <img :src="musicIcon" alt="" style="width: 65px; position: absolute; left: 70px; top: 20px" />
       <img :src="questionQuizIcon" style="width: 65px; position: absolute; right: 30px; top: 20px; cursor: pointer" alt="" @click="this.$router.push({ name: 'KnowledgeQuizPage' })" />
     </div>
   </div>
