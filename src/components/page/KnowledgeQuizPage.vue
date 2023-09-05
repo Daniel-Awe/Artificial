@@ -690,7 +690,11 @@ export default {
     // 记录本中收藏
     collectRecordFunc(id) {
       // 取消收藏，星星为空心
-      this.collectionData[id].collected = false
+      if (this.collectionData[id].collected == false) {
+        this.collectionData[id].collected = true
+      } else {
+        this.collectionData[id].collected = false
+      }
     },
     // 而后删除记录，需要在离开“记录本”后删除记录，而不是当前立即删除
     deleteCollect() {
