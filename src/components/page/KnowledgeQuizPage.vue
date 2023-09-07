@@ -94,9 +94,9 @@
       <!-- 收藏本 -->
       <div class="sec">
         <div class="collectionbox">
-          <div class="collectCard" v-for="(item, index) in collectionData" :key="index">
+          <div class="collectCard" v-for="(item, id) in collectionData" :key="id">
             <div @click="gotoTest(item.content)">{{ item.content }}</div>
-            <img :src="item.collected ? collect[0].img : collect[1].img" alt="" @click="collectRecordFunc(item.index)" style="width: 45px; cursor: pointer" />
+            <img :src="item.collected ? collect[0].img : collect[1].img" alt="" @click="collectRecordFunc(id)" style="width: 45px; cursor: pointer" />
           </div>
         </div>
       </div>
@@ -361,13 +361,11 @@ export default {
       collectionData: [
         {
           id: 0,
-          index: 0,
           content: '在哪一年的达特茅斯会议上正式提出了人工智能（AI）这一术语？',
           collected: true,
         },
         {
           id: 1,
-          index: 1,
           content: '人工智能的学习可以分为哪几种类型？',
           collected: true,
         },
@@ -691,10 +689,11 @@ export default {
 
     // 记录本中收藏
     collectRecordFunc(index) {
-      if (this.collectionData[index].collected == false) {
-        this.collectionData[index].collected = true
-      } else {
+      console.log(index)
+      if (this.collectionData[index].collected == true) {
         this.collectionData[index].collected = false
+      } else {
+        this.collectionData[index].collected = true
       }
       // 取消收藏，星星为空心
     },
@@ -730,7 +729,6 @@ export default {
       if (!collected) {
         const newContent = {
           id: this.testDataAll[id].id,
-          index: this.collectionData.length,
           content: this.testDataAll[id].content,
           collected: true,
         }
