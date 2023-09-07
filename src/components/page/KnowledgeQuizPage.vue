@@ -91,12 +91,12 @@
           </div>
         </div>
       </div>
-      <!-- 记录本 -->
+      <!-- 收藏本 -->
       <div class="sec">
         <div class="collectionbox">
-          <div class="collectCard" v-for="(item, id) in collectionData" :key="id">
+          <div class="collectCard" v-for="(item, index) in collectionData" :key="index">
             <div @click="gotoTest(item.content)">{{ item.content }}</div>
-            <img :src="item.collected ? collect[0].img : collect[1].img" alt="" @click="collectRecordFunc(item.id)" style="width: 45px; cursor: pointer" />
+            <img :src="item.collected ? collect[0].img : collect[1].img" alt="" @click="collectRecordFunc(item.index)" style="width: 45px; cursor: pointer" />
           </div>
         </div>
       </div>
@@ -361,11 +361,13 @@ export default {
       collectionData: [
         {
           id: 0,
+          index: 0,
           content: '在哪一年的达特茅斯会议上正式提出了人工智能（AI）这一术语？',
           collected: true,
         },
         {
           id: 1,
+          index: 1,
           content: '人工智能的学习可以分为哪几种类型？',
           collected: true,
         },
@@ -374,7 +376,7 @@ export default {
       // 底部导航栏
       navItem: [
         { label: '题库', selected: true },
-        { label: '笔记本', selected: false },
+        { label: '收藏本', selected: false },
       ],
       clickIndex: 0,
     }
@@ -688,13 +690,13 @@ export default {
     },
 
     // 记录本中收藏
-    collectRecordFunc(id) {
-      // 取消收藏，星星为空心
-      if (this.collectionData[id].collected == false) {
-        this.collectionData[id].collected = true
+    collectRecordFunc(index) {
+      if (this.collectionData[index].collected == false) {
+        this.collectionData[index].collected = true
       } else {
-        this.collectionData[id].collected = false
+        this.collectionData[index].collected = false
       }
+      // 取消收藏，星星为空心
     },
     // 而后删除记录，需要在离开“记录本”后删除记录，而不是当前立即删除
     deleteCollect() {
@@ -727,8 +729,9 @@ export default {
 
       if (!collected) {
         const newContent = {
-          content: this.testDataAll[id].content,
           id: this.testDataAll[id].id,
+          index: this.collectionData.length,
+          content: this.testDataAll[id].content,
           collected: true,
         }
         this.collectionData.push(newContent)
