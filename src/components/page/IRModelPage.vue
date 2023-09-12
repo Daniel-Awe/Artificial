@@ -13,6 +13,7 @@
             <div class="tips">CLIP终止层数</div>
             <input type="number" v-model="CLIPvolume" class="inputNumber" />
           </div>
+          <div class="backButton" @click="this.$router.push({ name: 'SDRealismPage' })">back</div>
         </div>
         <div class="tipboxs">
           <div class="content">
@@ -253,7 +254,7 @@ export default {
       this.currentNav = id
       this.currentoption = this.TopNav[this.currentNav].content
 
-      this.$router.push({ name: this.TopNav[this.currentNav].routeName }) // 使用 router.push
+      // this.$router.push({ name: this.TopNav[this.currentNav].routeName }) // 使用 router.push
       this.propmt()
       // console.log(this.TopNav[this.currentNav].content)
       // console.log(this.currentoption)
@@ -340,6 +341,15 @@ export default {
       border: 3px solid rgba($color: rgba(105, 255, 246, 1), $alpha: 1);
       color: #000;
     }
+  }
+  .backButton {
+    position: absolute;
+    right: 30px;
+    padding: 8px 20px;
+    border: 2px solid rgba(135, 206, 250, 0.75);
+    cursor: pointer;
+    box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
   }
 }
 </style>

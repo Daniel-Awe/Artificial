@@ -358,18 +358,7 @@ export default {
       ],
 
       // 收藏题目笔记本
-      collectionData: [
-        {
-          id: 0,
-          content: '在哪一年的达特茅斯会议上正式提出了人工智能（AI）这一术语？',
-          collected: true,
-        },
-        {
-          id: 1,
-          content: '人工智能的学习可以分为哪几种类型？',
-          collected: true,
-        },
-      ],
+      collectionData: [],
 
       // 底部导航栏
       navItem: [

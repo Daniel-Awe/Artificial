@@ -26,7 +26,7 @@
           <div class="left" style="transition: all 0.25s">
             <div class="gap" style="height: 10px"></div>
             <BoxWord :boxword="this.SamplePlot.text1" style="position: absolute; top: -10px"></BoxWord>
-            <img :src="this.SamplePlot.sample[SampleIndex].img" style="transition: all 0.25s" />
+            <img :src="this.SamplePlot.sample[SampleIndex].img" style="transition: all 0.3s" />
 
             <div style="position: absolute; bottom: -20px; left: 450px">
               <ArtWord class="artwrod" :text="this.SamplePlot.sample[SampleIndex].title" style="transition: all 0.25s"></ArtWord>
@@ -40,7 +40,7 @@
 
                   line-height: 58px;
                   color: rgba(229, 229, 229, 1);
-                  transition: all 0.25s;
+                  transition: all 0.3s;
                   cursor: pointer;
                 "
                 class="tips"
@@ -481,7 +481,7 @@ export default {
         img.style.opacity = '1'
         artword.style.opacity = '1'
         tips.style.opacity = '1'
-      }, 100)
+      }, 200)
     },
   },
   created() {

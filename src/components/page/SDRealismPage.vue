@@ -107,7 +107,7 @@ import BottomNavigationBar from '../BottomNavigationBar.vue'
 import ArtWord from '../ArtWord.vue'
 
 export default {
-  name: 'SDUpgradePage',
+  name: 'SDRealismPage',
   components: {
     TopNavigationBar,
     SideNavigationBar,

@@ -12,9 +12,6 @@ import SDInstallPage from '../components/page/SDInstallPage.vue'
 import SDRealismPage from '../components/page/SDRealismPage.vue'
 
 import IRModelPage from '../components/page/IRModelPage.vue'
-import TextToImgPage from '../components/page/IRModelPage/TextToImgPage.vue'
-import ImgToImgPage from '../components/page/IRModelPage/ImgToImg.vue'
-import PostProcessPage from '../components/page/IRModelPage/PostProcessPage'
 
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
@@ -77,27 +74,6 @@ const router = createRouter({
       path: '/irmodel',
       name: 'IRModelPage',
       component: IRModelPage,
-      children: [
-        {
-          path: '/', // 默认路由，对应主页
-          redirect: '/textimg',
-        },
-        {
-          path: '/textimg',
-          component: TextToImgPage,
-          name: 'TextToImgPage',
-        },
-        {
-          path: '/postprocess',
-          component: PostProcessPage,
-          name: 'PostProcessPage',
-        },
-        {
-          path: '/imgimg',
-          component: ImgToImgPage,
-          name: 'ImgToImgPage',
-        },
-      ],
     },
   ],
 })
