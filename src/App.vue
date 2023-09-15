@@ -2,16 +2,23 @@
   <div id="app">
     <div class="bigbox">
       <img :src="bgImg" alt="" class="bgImg" />
+      <audio ref="audioPlayer" preload="auto" autoplay v-if="audioIsPlaying" loop>
+        <source src="./assets/audios/Legacy.mp3" type="audio/mpeg" />
+      </audio>
 
-      <router-view></router-view>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'App',
-  computed: {},
+
+  computed: {
+    ...mapGetters(['audioIsPlaying']),
+  },
   data() {
     return {
       bgImg: 'https://img.js.design/assets/img/64a6c335c6ce3224527c27a4.png#d43e855f4cd851231b618daf33a7a2b4',
@@ -20,11 +27,29 @@ export default {
     }
   },
   mounted() {
-    this.handleResize()
+    // this.handleResize()
+    this.handleResize2()
 
-    window.addEventListener('resize', this.handleResize)
+    setTimeout(() => {
+      this.$store.dispatch('stopAudio')
+      console.log(this.audioIsPlaying)
+
+      this.$store.dispatch('playAudio')
+      console.log(this.audioIsPlaying)
+    }, 250)
+    window.addEventListener('resize', this.handleResize2)
   },
   methods: {
+    ...mapMutations(['setAudioPlaying']), // 将设置音频播放状态的mutation映射到methods中
+
+    playAudio() {
+      // 调用Vuex的action来播放音频
+      this.$store.dispatch('playAudio')
+    },
+    stopAudio() {
+      // 调用Vuex的action来停止音频
+      this.$store.dispatch('stopAudio')
+    },
     handleResize() {
       this.viewportWidth = window.innerWidth
       this.viewportHeight = window.innerHeight
@@ -46,6 +71,25 @@ export default {
         body.style.left = '50%'
         body.style.transform = 'translate(-50%, -50%)'
       }
+      console.log('w' + this.viewportWidth)
+      console.log('h' + this.viewportHeight)
+    },
+    handleResize2() {
+      this.viewportWidth = window.innerWidth
+      this.viewportHeight = window.innerHeight
+      const bodybox = document.querySelector('.bigbox')
+      // bigbox缩放大小
+      var actualwidth = 0.8 * this.viewportWidth
+      var actualscale = actualwidth / 1920
+
+      bodybox.style.transform = `scale(${actualscale})`
+
+      // bigbox的margin页边距
+      var marginLeft = (this.viewportWidth - 1920 * actualscale) / 2
+      var marginTop = (this.viewportHeight - 1080 * (actualscale - 0.04)) / 2
+      bodybox.style.marginLeft = marginLeft + 'px'
+      bodybox.style.transform = `scale(${actualscale}) translateY(${marginTop}px)`
+
       console.log('w' + this.viewportWidth)
       console.log('h' + this.viewportHeight)
     },
@@ -72,6 +116,7 @@ li {
   width: 100vw;
   height: 100vh;
   background: rgba($color: #000000, $alpha: 0.5);
+  margin: 0;
 
   .bigbox {
     position: absolute;
@@ -80,6 +125,7 @@ li {
     height: 1080px;
     position: relative;
     overflow: hidden;
+    transform-origin: left top;
 
     .bgImg {
       position: absolute;

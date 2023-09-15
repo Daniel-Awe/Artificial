@@ -12,6 +12,7 @@ export default [
     analyse: '在1956年达特茅斯会议上正式提出使用了人工智能（artificial intelligence，AI）这一术语，标志着人工智能学科的诞生。 ',
     routeName: 'AIdevelopPage',
     subnav: '发展历程',
+    status: -1,
   },
   {
     id: 1,
@@ -26,6 +27,7 @@ export default [
     analyse: '人工智能的学习可以分为监督学习，无监督学习和强化学习。',
     routeName: 'AIdevelopPage',
     subnav: '拓展介绍',
+    status: -1,
   },
   {
     id: 2,
@@ -40,6 +42,7 @@ export default [
     analyse: '图像编码器会根据图像特征向量把噪声图逐步降噪成一张新的图片。',
     routeName: 'APIntroPage',
     subnav: '绘制过程',
+    status: -1,
   },
   {
     id: 3,
@@ -54,6 +57,7 @@ export default [
     analyse: '像是人类世界中的考试题一样，随机给模型一个训练示例，然后尝试让他进行生成，之后再拿实际的正确答案进行对比，看看这两者相差多少，计算差值 如果差得多就打破重做，差得少就通过测试这样的流程一直循环上亿次。',
     routeName: 'APIntroPage',
     subnav: '使用原理',
+    status: -1,
   },
   {
     id: 4,
@@ -68,6 +72,7 @@ export default [
     analyse: 'stable diffusion使用的是openAI开源的 CLIP模型对输入的text提取提示词。',
     routeName: 'APUpgradePage',
     subnav: '提示词',
+    status: -1,
   },
   {
     id: 5,
@@ -82,6 +87,7 @@ export default [
     analyse: '维度降低会丢失一部分信息，然而在某些情况下，降维不是件坏事。通过降维我们可以过滤掉一些不太重要的信息你，只保留最重要的信息。',
     routeName: 'APUpgradePage',
     subnav: '噪声图',
+    status: -1,
   },
   {
     id: 6,
@@ -96,6 +102,7 @@ export default [
     analyse: '扩散过程是指的对数据逐渐增加高斯噪音直至数据变成随机噪音的过程。',
     routeName: 'APUpgradePage',
     subnav: '前向扩散',
+    status: -1,
   },
   {
     id: 7,
@@ -110,6 +117,7 @@ export default [
     analyse: '扩散过程是将数据噪音化，那么反向过程就是一个去噪的过程。',
     routeName: 'APUpgradePage',
     subnav: '后向扩散',
+    status: -1,
   },
   {
     id: 8,
@@ -124,6 +132,7 @@ export default [
     analyse: '文生图就是直接在数据库中初始化一个噪声，进行采样。',
     routeName: 'APUpgradePage',
     subnav: '采样图',
+    status: -1,
   },
   {
     id: 9,
@@ -138,6 +147,7 @@ export default [
     analyse: 'U-Net 的输出是噪声的残差，用于通过程序算法计算去噪的潜在图像表示。',
     routeName: 'APUpgradePage',
     subnav: 'U-Net模型',
+    status: -1,
   },
   {
     id: 10,
@@ -152,6 +162,7 @@ export default [
     analyse: '第一步是输入关键词，然后关键词会被ai转换成图像特征向量。',
     routeName: 'APIntroPage',
     subnav: '绘制过程',
+    status: -1,
   },
   {
     id: 11,
@@ -166,6 +177,7 @@ export default [
     analyse: '扩散过程是指的对数据逐渐增加高斯噪音直至数据变成随机噪音的过程。',
     routeName: 'APUpgradePage',
     subnav: '前向扩散',
+    status: -1,
   },
   {
     id: 12,
@@ -180,6 +192,7 @@ export default [
     analyse: '从图生图的流程图中得出。',
     routeName: 'APUpgradePage',
     subnav: '采样图',
+    status: -1,
   },
   {
     id: 13,
@@ -194,6 +207,7 @@ export default [
     analyse: '用绝对的数量让模型偏向我们需要的绘画风格。',
     routeName: 'APIntroPage',
     subnav: '使用原理',
+    status: -1,
   },
   {
     id: 14,
@@ -208,6 +222,7 @@ export default [
     analyse: 'stable diffusion使用的是openAI开源的 CLIP模型对输入的text提取提示词。',
     routeName: 'APUpgradePage',
     subnav: '提示词',
+    status: -1,
   },
   {
     id: 15,
@@ -222,6 +237,7 @@ export default [
     analyse: 'Stable diffusion是一种基于潜在扩散模型（Latent Diffusion Models）的文本到图像生成模型。',
     routeName: 'SDIntroPage',
     subnav: '基本介绍',
+    status: -1,
   },
   {
     id: 16,
@@ -236,6 +252,7 @@ export default [
     analyse: 'Stable Diffusion Web UI 是一个基于 Stable Diffusion 的基础应用，将Stable Diffusion的操作可视化。',
     routeName: 'SDIntroPage',
     subnav: '基本介绍',
+    status: -1,
   },
   {
     id: 17,
@@ -250,6 +267,7 @@ export default [
     analyse: 'Stable Diffusion Web UI 是利用 gradio 模块搭建出交互程序，主要使用python ，JavaScript，HTML，css进行开发。',
     routeName: 'SDUpgradePage',
     subnav: '基本介绍+',
+    status: -1,
   },
   {
     id: 18,
@@ -264,6 +282,7 @@ export default [
     analyse: '只能在Windows或者Mac电脑的系统上运行。',
     routeName: 'SDIntroPage',
     subnav: '本地搭建',
+    status: -1,
   },
   {
     id: 19,
@@ -278,5 +297,6 @@ export default [
     analyse: '下载完model后把model解压，粘贴到stable diffusion-webui/models/stable diffusion/底下。',
     routeName: 'SDInstallPage',
     subnav: '下载model',
+    status: -1,
   },
 ]

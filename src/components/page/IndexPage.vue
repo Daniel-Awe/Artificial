@@ -15,8 +15,8 @@
     <!-- Tips -->
     <TipsBox v-for="(item, id) in ButtonTips" :key="id" class="tipsbox" :content="item.content" :style="{ left: item.left, top: item.top, opacity: item.show }" v-show="item.has"></TipsBox>
     <!-- TopIcons -->
-    <div class="topicons">
-      <img :src="musicIcon" alt="" style="width: 65px; position: absolute; left: 70px; top: 20px" />
+    <div class="topicons" style="margin-left: 100px">
+      <img :src="musicIcon" alt="" style="width: 65px; position: absolute; left: 70px; top: 20px; cursor: pointer" @click="playAudio()" />
       <img :src="questionQuizIcon" style="width: 65px; position: absolute; right: 30px; top: 20px; cursor: pointer" alt="" @click="this.$router.push({ name: 'KnowledgeQuizPage' })" />
     </div>
   </div>
@@ -25,6 +25,8 @@
 <script>
 import SideNavigationBar from '../SideNavigationBar.vue'
 import TipsBox from '../TipsBox.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'IndexPage',
   components: { SideNavigationBar, TipsBox },
@@ -198,6 +200,20 @@ export default {
     }
   },
   methods: {
+    playAudio() {
+      // 调用Vuex的action来播放音频
+
+      if (this.audioIsPlaying) {
+        this.$store.dispatch('stopAudio')
+      } else {
+        this.$store.dispatch('playAudio')
+      }
+      console.log(this.audioIsPlaying)
+    },
+    toggleAudioState() {
+      console.log(this.$parent.$refs)
+      console.log(this.audio)
+    },
     animateElement(element, duration, opacityValue, transformValue) {
       setTimeout(() => {
         element.style.transform = transformValue
@@ -254,7 +270,9 @@ export default {
       }
     },
   },
+
   computed: {
+    ...mapGetters(['audioIsPlaying']),
     expandedHeight() {
       // Calculate the height of the expanded button based on the number of options
       const options = document.querySelectorAll('.option')

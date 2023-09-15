@@ -4,7 +4,7 @@
       <div class="icon">
         <img :src="backIcon" alt="" class="back Icon" :class="{ backshow: backShow }" @click="this.$router.back()" />
         <img :src="homeIcon" alt="" class="home Icon" @click="this.$router.push({ name: 'IndexPage' })" />
-        <img :src="musicIcon" alt="" class="music Icon" />
+        <img :src="musicIcon" alt="" class="music Icon" @click="playAudio()" />
       </div>
       <div class="comm">
         <div class="title" :style="{ fontSize: this.titleSize + 'px' }">
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'TopNavigationBar',
   props: {
@@ -98,6 +100,16 @@ export default {
     }
   },
   methods: {
+    playAudio() {
+      // 调用Vuex的action来播放音频
+      console.log(this.audioIsPlaying)
+
+      if (this.audioIsPlaying) {
+        this.$store.dispatch('stopAudio')
+      } else {
+        this.$store.dispatch('playAudio')
+      }
+    },
     change() {
       this.$router.push({ name: this.ll[this.llindex].e[this.currentIndex].routeName })
     },
@@ -117,6 +129,9 @@ export default {
         }
       }
     }
+  },
+  computed: {
+    ...mapGetters(['audioIsPlaying']),
   },
 }
 </script>

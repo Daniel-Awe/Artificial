@@ -60,7 +60,7 @@
                       ><span v-if="currentQuestion.subtitle">-{{ currentQuestion.subtitle }}</span
                       ><span v-if="currentQuestion.category">-{{ currentQuestion.category }}</span>
                     </div>
-                    <div class="jump" @click="jumpClick()" style="">跳过</div>
+                    <div class="jump" @click="jumpClick()" style="">下一题</div>
                     <div class="collect"><img :src="collected ? collect[0].img : collect[1].img" alt="" @click="collectFunc(currentQuestion.content)" /></div>
                     <div class="trueOrfa"><span v-if="this.right">正确</span><span v-if="!this.right">错误</span></div>
                     <ArtWord :text="'错题回顾'" v-if="this.fromMistake" :vertical="true" style="position: absolute; left: -350px; top: -50px; z-index: 99"></ArtWord>
@@ -647,13 +647,15 @@ export default {
     },
     // 跳过该题按钮
     jumpClick() {
-      this.testData.push(this.currentQuestion)
+      if (!this.choiced) {
+        this.jumpNumber++
+        this.testData.push(this.currentQuestion)
+      }
       console.log(this.testData)
       this.currentQuestionIndex++
       this.choiceRenew()
       this.collected = false
 
-      this.jumpNumber++
       // 题目做完，显示报告
       if (this.currentQuestionIndex === this.testData.length) {
         this.gotoReport()
@@ -954,7 +956,7 @@ export default {
               }
               .jump {
                 width: 65px;
-                height: 145px;
+                height: 195px;
                 position: absolute;
                 right: -270px;
                 top: -83px;
@@ -976,7 +978,7 @@ export default {
               .collect {
                 position: absolute;
                 right: -262px;
-                top: 85px;
+                top: 135px;
                 img {
                   width: 45px;
                   cursor: pointer;
