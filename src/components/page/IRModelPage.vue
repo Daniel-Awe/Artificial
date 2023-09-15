@@ -13,6 +13,8 @@
             <div class="tips">CLIP终止层数</div>
             <input type="number" v-model="CLIPvolume" class="inputNumber" />
           </div>
+          <div class="musicButton" @click="playAudio()">music</div>
+
           <div class="backButton" @click="this.$router.push({ name: 'SDRealismPage' })">back</div>
         </div>
         <div class="tipboxs">
@@ -41,6 +43,8 @@
 import TextToImgPage from './IRModelPage/TextToImgPage.vue'
 import ImgToImg from './IRModelPage/ImgToImg.vue'
 import PostProcessPage from './IRModelPage/PostProcessPage.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'IRModelPage',
   components: {
@@ -229,7 +233,20 @@ export default {
       renew: false,
     }
   },
+  computed: {
+    ...mapGetters(['audioIsPlaying']),
+  },
   methods: {
+    playAudio() {
+      // 调用Vuex的action来播放音频
+
+      if (this.audioIsPlaying) {
+        this.$store.dispatch('stopAudio')
+      } else {
+        this.$store.dispatch('playAudio')
+      }
+      console.log(this.audioIsPlaying)
+    },
     handleSelectChange(value) {
       this.currentModel = value
       this.renew = true
@@ -345,6 +362,15 @@ export default {
   .backButton {
     position: absolute;
     right: 30px;
+    padding: 8px 20px;
+    border: 2px solid rgba(135, 206, 250, 0.75);
+    cursor: pointer;
+    box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  .musicButton {
+    position: absolute;
+    right: 130px;
     padding: 8px 20px;
     border: 2px solid rgba(135, 206, 250, 0.75);
     cursor: pointer;

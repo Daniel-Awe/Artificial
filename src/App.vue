@@ -30,13 +30,13 @@ export default {
     // this.handleResize()
     this.handleResize2()
 
-    setTimeout(() => {
-      this.$store.dispatch('stopAudio')
-      console.log(this.audioIsPlaying)
+    // setTimeout(() => {
+    //   this.$store.dispatch('stopAudio')
+    //   console.log(this.audioIsPlaying)
 
-      this.$store.dispatch('playAudio')
-      console.log(this.audioIsPlaying)
-    }, 250)
+    //   this.$store.dispatch('playAudio')
+    //   console.log(this.audioIsPlaying)
+    // }, 250)
     window.addEventListener('resize', this.handleResize2)
   },
   methods: {
@@ -86,7 +86,7 @@ export default {
 
       // bigbox的margin页边距
       var marginLeft = (this.viewportWidth - 1920 * actualscale) / 2
-      var marginTop = (this.viewportHeight - 1080 * (actualscale - 0.04)) / 2
+      var marginTop = (this.viewportHeight - 1080 * (actualscale - 0.02)) / 2
       bodybox.style.marginLeft = marginLeft + 'px'
       bodybox.style.transform = `scale(${actualscale}) translateY(${marginTop}px)`
 
