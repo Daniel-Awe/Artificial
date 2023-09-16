@@ -14,21 +14,39 @@
             <div class="cate">
               <div class="rank" style="position: absolute; left: 370px; top: 135px">分类</div>
               <div class="lev1 level">
-                <div class="catebutton" v-for="(bank, id) in categories" :key="id" :class="{ categoryChoice: id == this.bankIndex }" @click="categoryClick(1, id)">{{ bank.bank }}</div>
+                <div class="catebutton" v-for="(bank, id) in categories" :key="id" :class="{ categoryChoice: id == this.bankIndex }" @click="categoryClick(1, id)" :style="{ color: bank.color ? bank.color : '' }">{{ bank.bank }}</div>
               </div>
               <div class="lev2 level">
-                <div class="catebutton" v-for="(subbank, id) in categories[this.bankIndex].subbank" :key="id" :class="{ categoryChoice: id == this.subbankIndex }" @click="categoryClick(2, id)">{{ subbank.text }}</div>
+                <div class="catebutton" v-for="(subbank, id) in categories[this.bankIndex].subbank" :key="id" :class="{ categoryChoice: id == this.subbankIndex }" @click="categoryClick(2, id)" :style="{ color: subbank.color ? subbank.color : '' }">{{ subbank.text }}</div>
               </div>
               <div class="lev3 level" v-if="categories[this.bankIndex].subbank[this.subbankIndex].title[0].text != ''">
-                <div class="catebutton" v-for="(title, id) in categories[this.bankIndex].subbank[this.subbankIndex].title" :key="id" :class="{ categoryChoice: id == this.titleIndex && this.subbankIndex == 0 && this.bankIndex == 0 }" @click="categoryClick(3, id)">{{ title.text }}</div>
+                <div
+                  class="catebutton"
+                  v-for="(title, id) in categories[this.bankIndex].subbank[this.subbankIndex].title"
+                  :key="id"
+                  :class="{ categoryChoice: id == this.titleIndex && this.subbankIndex == 0 && this.bankIndex == 0 }"
+                  @click="categoryClick(3, id)"
+                  :style="{ color: title.color ? title.color : '' }"
+                >
+                  {{ title.text }}
+                </div>
               </div>
               <div class="lev4 level" v-if="categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[0].text != ''">
-                <div class="catebutton" v-for="(subtitle, id) in categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle" :key="id" :class="{ categoryChoice: id == this.subtitleIndex && this.titleIndex == 1 }" @click="categoryClick(4, id)">
+                <div
+                  class="catebutton"
+                  v-for="(subtitle, id) in categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle"
+                  :key="id"
+                  :class="{ categoryChoice: id == this.subtitleIndex && this.titleIndex == 1 }"
+                  @click="categoryClick(4, id)"
+                  :style="{ color: subtitle.color ? subtitle.color : '' }"
+                >
                   {{ subtitle.text }}
                 </div>
               </div>
               <div class="lev5 level" v-if="categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[this.subtitleIndex].category.length != 0">
-                <div class="catebutton" v-for="(category, id) in categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[this.subtitleIndex].category" :key="id" @click="categoryClick(5, id, category.text)">{{ category.text }}</div>
+                <div class="catebutton" v-for="(category, id) in categories[this.bankIndex].subbank[this.subbankIndex].title[this.titleIndex].subtitle[this.subtitleIndex].category" :key="id" @click="categoryClick(5, id, category.text)" :style="{ color: category.color ? category.color : '' }">
+                  {{ category.text }}
+                </div>
               </div>
               <div class="start" @click="startClick()" :class="{ startSellected: isCategory }">{{ startWords }}</div>
               <div class="random" @click="categoryClick(0, -1)" style="">随机抽取</div>
@@ -200,10 +218,12 @@ export default {
                     {
                       text: '发展历程',
                       category: [],
+                      color: '#fff',
                     },
                     {
                       text: '拓展介绍',
                       category: [],
+                      color: '#fff',
                     },
                   ],
                 },
@@ -215,9 +235,11 @@ export default {
                       category: [
                         {
                           text: '绘制过程',
+                          color: '#fff',
                         },
                         {
                           text: '使用原理',
+                          color: '#fff',
                         },
                       ],
                     },
@@ -226,21 +248,27 @@ export default {
                       category: [
                         {
                           text: '提示词',
+                          color: '#fff',
                         },
                         {
                           text: '噪声图',
+                          color: '#fff',
                         },
                         {
                           text: '前向扩散',
+                          color: '#fff',
                         },
                         {
                           text: '后向扩散',
+                          color: '#fff',
                         },
                         {
                           text: '采样图',
+                          color: '#fff',
                         },
                         {
                           text: 'U-Net模型',
+                          color: '#fff',
                         },
                       ],
                     },
@@ -253,6 +281,7 @@ export default {
               title: [
                 {
                   text: '1',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -262,6 +291,7 @@ export default {
                 },
                 {
                   text: '2',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -271,6 +301,7 @@ export default {
                 },
                 {
                   text: '3',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -280,6 +311,7 @@ export default {
                 },
                 {
                   text: '4',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -289,6 +321,7 @@ export default {
                 },
                 {
                   text: '5',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -308,6 +341,7 @@ export default {
               title: [
                 {
                   text: '1',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -317,6 +351,7 @@ export default {
                 },
                 {
                   text: '2',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -326,6 +361,7 @@ export default {
                 },
                 {
                   text: '3',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -335,6 +371,7 @@ export default {
                 },
                 {
                   text: '4',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -344,6 +381,7 @@ export default {
                 },
                 {
                   text: '5',
+                  color: '#fff',
                   subtitle: [
                     {
                       text: '',
@@ -579,6 +617,7 @@ export default {
         if (index == this.correctedNumber) {
           this.right = true
           correctChoice.style.background = 'rgba(67, 207, 124, 0.3)'
+          this.testDataAll[this.currentQuestion.id].status = 0
         } else {
           this.right = false
           correctChoice.style.background = 'rgba(212, 48, 48, 0.3)'
@@ -586,8 +625,11 @@ export default {
           currentChoice.style.background = 'rgba(67, 207, 124, 0.3)'
           this.analyse = true
           this.mistakeCollection.push(this.currentQuestion)
+          this.testDataAll[this.currentQuestion.id].status = 1
+
           // console.log(currentChoice.innerHTML)
         }
+        console.log(this.testDataAll[this.currentQuestion.id].status)
       } else if (currentChoice.innerHTML == '复习知识点') {
         // 显示复习知识点
         this.$router.push({ name: this.currentQuestion.routeName, query: { subnav: this.currentQuestion.subnav, backshow: true } })
@@ -610,8 +652,8 @@ export default {
         currentChoice.style.background = 'rgba(0, 0, 0, 0.3)'
         currentOp.style.color = 'rgba(105, 255, 246, 1)'
       }
-      console.log(this.currentQuestionIndex)
-      console.log(this.testData)
+      // console.log(this.currentQuestionIndex)
+      // console.log(this.testData)
     },
     // 答题报告
     gotoReport() {
@@ -631,6 +673,9 @@ export default {
       this.mistakeCollection = []
       this.isCategory = false
       this.fromMistake = false
+      this.renewCatalogue()
+      console.log(this.categories)
+      console.log('category')
     },
     // 重置ABCD所有选项及其属性
     choiceRenew() {
@@ -742,6 +787,42 @@ export default {
         this.navItem[0].selected = true
       }
     },
+    // 按照正确/错误/未做题显示颜色
+    renewCatalogue() {
+      for (var i = 0; i < this.testDataAll.length; i++) {
+        if (i < 2) {
+          if (this.testDataAll[i].status == 1) {
+            this.categories[0].subbank[0].title[0].subtitle[i].color = '#D43030'
+          } else if (this.testDataAll[i].status == 0) {
+            this.categories[0].subbank[0].title[0].subtitle[i].color = '#69FFF6'
+          }
+        } else if (i < 4 && 1 < i) {
+          if (this.testDataAll[i].status == 1) {
+            this.categories[0].subbank[0].title[1].subtitle[0].category[i - 2].color = '#D43030'
+          } else if (this.testDataAll[i].status == 0) {
+            this.categories[0].subbank[0].title[1].subtitle[0].category[i - 2].color = '#69FFF6'
+          }
+        } else if (i < 10 && i > 3) {
+          if (this.testDataAll[i].status == 1) {
+            this.categories[0].subbank[0].title[1].subtitle[1].category[i - 4].color = '#D43030'
+          } else if (this.testDataAll[i].status == 0) {
+            this.categories[0].subbank[0].title[1].subtitle[1].category[i - 4].color = '#69FFF6'
+          }
+        } else if (i < 15 && i > 9) {
+          if (this.testDataAll[i].status == 1) {
+            this.categories[0].subbank[1].title[i - 10].color = '#D43030'
+          } else if (this.testDataAll[i].status == 0) {
+            this.categories[0].subbank[1].title[i - 10].color = '#69FFF6'
+          }
+        } else {
+          if (this.testDataAll[i].status == 1) {
+            this.categories[1].subbank[0].title[i - 15].color = '#D43030'
+          } else if (this.testDataAll[i].status == 0) {
+            this.categories[1].subbank[0].title[i - 15].color = '#69FFF6'
+          }
+        }
+      }
+    },
   },
   created() {
     // 获取传过来的值，标题以及副标题
@@ -792,6 +873,9 @@ export default {
     overflow: hidden;
 
     .collectionbox {
+      overflow: auto;
+      height: 900px;
+      padding-bottom: 35px;
       .collectCard {
         position: relative;
         margin: 0 auto;

@@ -6,7 +6,7 @@
     <img :src="aiImg" alt="" class="aiImg" />
 
     <!-- 按钮 -->
-    <div class="button Ai" v-for="(item, id) in IndexButtons" :key="id" :style="{ height: item.isExpanded ? item.buttonHeight : '100px', left: item.left, top: item.top }" @mouseover="ShowTips(id)" @mouseout="HideTips(id)">
+    <div class="button Ai" v-for="(item, id) in IndexButtons" :key="id" :style="{ height: item.isExpanded ? item.buttonHeight : '100px', left: item.left, top: item.top, width: item.buttonWidth }" @mouseover="ShowTips(id)" @mouseout="HideTips(id)">
       <div class="option" v-for="(option, key) in item.options" :key="key">
         <p :class="{ 'sm-size': option.isSmall }" @click="toggleButton(id, key)" style="display: block">{{ option.text }}</p>
       </div>
@@ -43,6 +43,7 @@ export default {
           isExpanded: false,
           animating: false,
           buttonHeight: '300px',
+          buttonWidth: '244px',
           options: [
             {
               text: '人工智能',
@@ -69,6 +70,7 @@ export default {
           isExpanded: false,
           animating: false,
           buttonHeight: '300px',
+          buttonWidth: '244px',
           options: [
             {
               text: 'AI绘画',
@@ -95,9 +97,10 @@ export default {
           isExpanded: false,
           animating: false,
           buttonHeight: '300px',
+          buttonWidth: '332px',
           options: [
             {
-              text: 'stable diffusion',
+              text: 'Stable Diffusion WebUI',
               routeName: '',
               isSmall: true,
             },
@@ -122,6 +125,7 @@ export default {
           isExpanded: false,
           animating: false,
           buttonHeight: '400px',
+          buttonWidth: '264px',
           options: [
             {
               text: '实际运用',
@@ -136,7 +140,7 @@ export default {
               text: '辅助建筑设计',
               subNav: '辅助建筑设计',
               routeName: 'PAPaintingPage',
-              isSmall: true,
+              isSmall: false,
             },
             {
               text: '绘画2D转3D',
