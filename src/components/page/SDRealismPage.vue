@@ -15,7 +15,7 @@
               <img :src="exchangeButton" alt="" />
             </div>
           </div>
-          <div class="mod1 txtoimg" :style="{ opacity: this.txtTOimgIndex ? '1' : '0' }" style="height: 840px">
+          <div class="mod1 txtoimg" :style="{ display: !this.txtTOimgIndex ? 'none' : 'flex' }" style="height: 840px">
             <div class="smbox" v-for="(item, id) in txtTOimg" :key="id">
               <div class="smtitle">{{ item.text }}</div>
               <img :src="item.img" alt="" :style="{ height: item.imgH + 'px' }" />
@@ -23,8 +23,8 @@
           </div>
           <div class="mod2" :style="{ opacity: this.txtTOimgIndex ? '0' : '1' }" style="margin-top: 100px">
             <div class="txt">
-              <video controls width="1400">
-                <source :src="videoSourceTxt" type="video/mp4" />
+              <video controls width="1400" :style="{ display: this.txtTOimgIndex ? 'none' : 'block' }" style="cursor: pointer">
+                <source :src="videoSourceTxt" type="video/mp4" :style="{ display: this.txtTOimgIndex ? 'none' : 'block' }" />
               </video>
             </div>
           </div>
@@ -40,7 +40,7 @@
               <img :src="exchangeButton" alt="" />
             </div>
           </div>
-          <div class="mod1" :style="{ opacity: this.imgTOimgIndex ? '1' : '0' }">
+          <div class="mod1" :style="{ display: !this.imgTOimgIndex ? 'none' : 'flex' }">
             <div class="smbox" v-for="(item, id) in imgTOimg" :key="id" :style="{ marginTop: id === 0 ? '50px' : '0' }">
               <div class="smtitle">{{ item.text }}</div>
               <img :src="item.img" alt="" :style="{ height: item.imgH + 'px' }" />
@@ -48,8 +48,8 @@
           </div>
           <div class="mod2" :style="{ opacity: this.imgTOimgIndex ? '0' : '1' }" style="margin-top: 100px">
             <div class="txt">
-              <video controls width="1400">
-                <source :src="videoSourceImg" type="video/mp4" />
+              <video controls width="1400" :style="{ display: this.imgTOimgIndex ? 'none' : 'block' }">
+                <source :src="videoSourceImg" type="video/mp4" :style="{ display: this.imgTOimgIndex ? 'none' : 'block' }" />
               </video>
             </div>
           </div>
@@ -65,7 +65,7 @@
               <img :src="exchangeButton" alt="" />
             </div>
           </div>
-          <div class="mod1" :style="{ opacity: this.postimgIndex ? '1' : '0' }">
+          <div class="mod1" :style="{ display: !this.postimgIndex ? 'none' : 'flex' }">
             <div class="smbox" v-for="(item, id) in postimg" :key="id">
               <div class="smtitle">{{ item.text }}</div>
               <img :src="item.img" alt="" :style="{ height: item.imgH + 'px' }" />
@@ -73,8 +73,8 @@
           </div>
           <div class="mod2" :style="{ opacity: this.postimgIndex ? '0' : '1' }" style="margin-top: 100px">
             <div class="txt">
-              <video controls width="1400">
-                <source :src="videoSourcePost" type="video/mp4" />
+              <video controls width="1400" :style="{ display: this.postimgIndex ? 'none' : 'block' }">
+                <source :src="videoSourcePost" type="video/mp4" :style="{ display: this.postimgIndex ? 'none' : 'block' }" />
               </video>
             </div>
           </div>
@@ -471,7 +471,7 @@ export default {
 /* 图片容器样式 */
 .image-container {
   width: 100%;
-  max-height: 80vh; /* 设置最大高度，超出部分将滚动 */
+  height: 140vh; /* 设置最大高度，超出部分将滚动 */
   overflow-y: auto; /* 添加垂直滚动条 */
   text-align: center; /* 如果需要居中图片 */
 }

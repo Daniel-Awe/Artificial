@@ -16,11 +16,11 @@
         </div>
 
         <!-- 两侧的箭头 -->
-        <div class="left-arrow">
-          <img :src="leftArrowImg" alt="" @click="this.drawingIndex -= 1" :style="{ opacity: this.drawingIndex == 0 ? '0' : '1' }" />
+        <div class="left-arrow" :style="{ display: this.drawingIndex == 0 ? 'none' : 'block' }">
+          <img :src="leftArrowImg" alt="" @click="this.drawingIndex -= 1" />
         </div>
-        <div class="right-arrow">
-          <img :src="rightArrowImg" alt="" @click="this.drawingIndex += 1" :style="{ opacity: this.drawingIndex == this.drawingAid.length - 1 ? '0' : '1' }" />
+        <div class="right-arrow" :style="{ display: this.drawingIndex == this.drawingAid.length - 1 ? 'none' : 'block' }">
+          <img :src="rightArrowImg" alt="" @click="this.drawingIndex += 1" />
         </div>
         <!-- 五个圆形按钮 -->
         <div class="fiveCircle">
@@ -55,11 +55,11 @@
         </div>
 
         <!-- 两侧的箭头 -->
-        <div class="left-arrow">
-          <img :src="leftArrowImg" alt="" @click="this.designIndex -= 1" :style="{ opacity: this.designIndex == 0 ? '0' : '1' }" />
+        <div class="left-arrow" :style="{ display: this.designIndex == 0 ? 'none' : 'block' }">
+          <img :src="leftArrowImg" alt="" @click="this.designIndex -= 1" />
         </div>
-        <div class="right-arrow">
-          <img :src="rightArrowImg" alt="" @click="this.designIndex += 1" :style="{ opacity: this.designIndex == this.design.length - 1 ? '0' : '1' }" />
+        <div class="right-arrow" :style="{ display: this.designIndex == this.design.length - 1 ? 'none' : 'block' }">
+          <img :src="rightArrowImg" alt="" @click="this.designIndex += 1" />
         </div>
         <!-- 五个圆形按钮 -->
         <div class="fiveCircle">
@@ -78,11 +78,11 @@
         </div>
 
         <!-- 两侧的箭头 -->
-        <div class="left-arrow">
-          <img :src="leftArrowImg" alt="" @click="this.painting2DIndex -= 1" :style="{ opacity: this.painting2DIndex == 0 ? '0' : '1' }" />
+        <div class="left-arrow" :style="{ display: this.painting2DIndex == 0 ? 'none' : 'block' }">
+          <img :src="leftArrowImg" alt="" @click="this.painting2DIndex -= 1" />
         </div>
-        <div class="right-arrow">
-          <img :src="rightArrowImg" alt="" @click="this.painting2DIndex += 1" :style="{ opacity: this.painting2DIndex == painting2D.length - 1 ? '0' : '1' }" />
+        <div class="right-arrow" :style="{ display: this.painting2DIndex == painting2D.length - 1 ? 'none' : 'block' }">
+          <img :src="rightArrowImg" alt="" @click="this.painting2DIndex += 1" />
         </div>
         <!-- 五个圆形按钮 -->
         <div class="fiveCircle">
