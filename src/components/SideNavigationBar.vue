@@ -25,7 +25,7 @@
     >
       <!-- 背景 -->
       <div class="backg" style="width: 100%; height: 100%; position: relative">
-        <div class="block" style="width: 100%; height: 100%; background-color: rgba(43, 43, 43, 0.8); position: absolute; top: 0; left: 0"></div>
+        <div class="block" style="width: 100%; height: 100%; background-color: rgba(43, 43, 43, 0.8); backdrop-filter: blur(10px); position: absolute; top: 0; left: 0"></div>
         <img src="../assets/pictures/SidenavBackground.png" alt="" style="width: 100%; position: absolute; left: 0; top: 0" />
       </div>
       <!-- 蒙版 -->
@@ -73,34 +73,34 @@ export default {
           top: '165px',
           branchImg: require('../assets/pictures/SideNavLine/1.png'),
           branchImgLeft: '330px',
-          branchImgTop: '205px',
+          branchImgTop: '200px',
           branchShow: false,
           branch: [
             {
               title: '发展过程',
               left: '440px',
-              top: '385px',
+              top: '380px',
               routeName: 'AIdevelopPage',
               subnav: '发展过程',
             },
             {
               title: '拓展介绍',
               left: '440px',
-              top: '595px',
+              top: '590px',
               routeName: 'AIdevelopPage',
               subnav: '拓展介绍',
             },
             {
               title: '如何训练AI',
               left: '730px',
-              top: '490px',
+              top: '485px',
               routeName: 'AIdevelopPage',
               subnav: '拓展介绍',
             },
             {
               title: 'ChatGPT',
               left: '730px',
-              top: '700px',
+              top: '695px',
               routeName: 'AIdevelopPage',
               subnav: '拓展介绍+',
             },
@@ -218,7 +218,7 @@ export default {
         },
         {
           id: 2,
-          theme: 'stable diffusion',
+          theme: 'Stable Diffusion',
           left: '145px',
           top: '610px',
           isSmall: true,
@@ -409,30 +409,30 @@ export default {
         {
           id: 3,
           theme: '实际运用',
-          left: '160px',
+          left: '145px',
           top: '860px',
           branchShow: false,
           branchImg: require('../assets/pictures/SideNavLine/4.png'),
-          branchImgLeft: '350px',
+          branchImgLeft: '330px',
           branchImgTop: '440px',
           branch: [
             {
               title: '绘画辅助',
-              left: '460px',
+              left: '470px',
               top: '410px',
               routeName: 'PAPaintingPage',
               subnav: '绘画辅助',
             },
             {
               title: '辅助建筑设计',
-              left: '460px',
+              left: '470px',
               top: '545px',
               routeName: 'PAPaintingPage',
               subnav: '辅助建筑设计',
             },
             {
               title: '绘画2D转3D',
-              left: '460px',
+              left: '470px',
               top: '680px',
               routeName: 'PAPaintingPage',
               subnav: '绘画2D转3D',
