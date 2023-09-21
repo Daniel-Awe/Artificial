@@ -7,20 +7,20 @@
     <div class="body">
       <div class="bigbox">
         <div class="cueword part">
-          <BoxWord :boxword="this.CueWord" style="margin-top: 100px"></BoxWord>
+          <BoxWord :boxword="this.CueWord" :lineHeight="1.75" style="margin-top: 100px"></BoxWord>
         </div>
         <div class="noisemap part">
           <ArtWord class="art1" :text="this.NoiseMap.title1" style="margin-bottom: 25px; transition: all 0.25s"></ArtWord>
-          <BoxWord class="boxword1" :boxword="this.NoiseMap.text1" style="transition: all 0.25s"></BoxWord>
+          <BoxWord class="boxword1" :lineHeight="1.75" :boxword="this.NoiseMap.text1" style="transition: all 0.25s"></BoxWord>
           <ArtWord class="art2" :text="this.NoiseMap.title2" style="margin-bottom: 25px; margin-top: 40px; transition: all 0.25s"></ArtWord>
-          <BoxWord class="boxword2" :boxword="this.NoiseMap.text2" style="transition: all 0.25s"></BoxWord>
+          <BoxWord class="boxword2" :lineHeight="1.75" :boxword="this.NoiseMap.text2" style="transition: all 0.25s"></BoxWord>
         </div>
         <div class="forwarddiffu part">
           <img :src="this.ForwardDiffu.img" class="img" style="transition: all 0.25s" alt="" />
-          <BoxWord class="boxword" :boxword="this.ForwardDiffu.text1" style="margin-top: 30px; transition: all 0.25s"></BoxWord>
+          <BoxWord class="boxword" :lineHeight="1.75" :boxword="this.ForwardDiffu.text1" style="margin-top: 30px; transition: all 0.25s"></BoxWord>
         </div>
         <div class="backwarddiffu part">
-          <BoxWord :boxword="this.BackwardDiffu.text1" style="margin-top: 100px"></BoxWord>
+          <BoxWord :boxword="this.BackwardDiffu.text1" :lineHeight="1.75" style="margin-top: 100px"></BoxWord>
         </div>
         <div class="samplingplot part" style="left: 60px; position: relative; display: flex">
           <div class="left" style="transition: all 0.25s">
@@ -52,12 +52,12 @@
             </div>
           </div>
           <div class="right" style="transition: all 0.25s">
-            <BoxWord class="boxword" :boxword="this.SamplePlot.text2" :boxWidth="500" style="position: absolute; transition: all 0.25s; top: 50px"></BoxWord>
+            <BoxWord class="boxword" :boxword="this.SamplePlot.text2" :lineHeight="1.75" :boxWidth="450" style="position: absolute; transition: all 0.25s; top: 150px; margin-left: 15px"></BoxWord>
           </div>
         </div>
         <div class="unetmodel part" style="left: 120px; top: 100px; display: flex">
           <img :src="UNetModel.img" alt="" style="width: 1125px; margin-right: 20px; transition: all 0.25s" />
-          <BoxWord class="boxword" :boxword="this.UNetModel.text1" :boxWidth="590" :textIndent="false" style="transition: all 0.25s"></BoxWord>
+          <BoxWord class="boxword" :boxword="this.UNetModel.text1" :lineHeight="1.75" :boxWidth="550" :textIndent="false" style="transition: all 0.25s; margin: 75px 0 0 20px"></BoxWord>
         </div>
       </div>
     </div>

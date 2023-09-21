@@ -15,7 +15,7 @@
         <div class="lab" :class="{ isHoverLab: item.isHover }" v-for="(item, id) in datas" :key="id" :style="{ left: item.left, top: item.top, background: item.bgcolor }" @mouseover="ShowChange(id)" @mouseout="HideChange(id)">{{ item.label }}</div>
         <!-- 文字描述 -->
         <div class="description">
-          <div class="title">AI绘画过程</div>
+          <ArtWord :text="'AI绘画过程'" style="margin: 0 0 30px 200px"></ArtWord>
           <div class="content">
             <div v-for="(txt, key) in datas" :key="key" :class="{ isHoverText: txt.isHover }">{{ txt.text }}</div>
           </div>
@@ -40,7 +40,7 @@
               <img class="number" :src="item.img" alt="" style="" :style="{ left: item.imgleft + item.left + 'px', top: item.imgtop + item.top + 'px' }" />
               <ArtWord :text="item.title" class="title" :style="{ left: item.titleleft + item.left + 'px', top: item.titletop + item.top + 'px' }"></ArtWord>
               <div class="text" :style="{ left: item.textleft + item.left + 'px', top: item.texttop + item.top + 'px' }">{{ item.text }}</div>
-              <BoxWord class="boxword" :style="{ left: item.hexagonTextLeft, top: item.hexagonTextTop }" :boxWidth="item.hexagonTextWidth" :boxword="item.hexagonText" :wordSize="item.wordSize"></BoxWord>
+              <BoxWord class="boxword" :style="{ left: item.hexagonTextLeft, top: item.hexagonTextTop }" :boxWidth="item.hexagonTextWidth" :boxword="item.hexagonText" :wordSize="item.wordSize" :lineHeight="1.75"></BoxWord>
               <img :src="item.hexagonImg" alt="" class="hexagonImg" :style="{ left: item.hexagonImgLeft, top: item.hexagonImgTop }" />
             </div>
           </div>
@@ -131,7 +131,7 @@ export default {
           img: 'https://img.js.design/assets/img/64bbde6448740206395d6445.png#d8f8acb541e7714fca6626770b3512df',
           textleft: 130,
           texttop: 150,
-          wordSize: 36,
+          wordSize: 30,
 
           // 点击后展开的内容
           hexagonText: [
@@ -159,7 +159,7 @@ export default {
           img: 'https://img.js.design/assets/img/64bbe14848740206395d89f2.png#1c19164358517234612802409d45a7dd',
           textleft: 135,
           texttop: 150,
-          wordSize: 36,
+          wordSize: 30,
 
           // 点击后展开的内容
           hexagonText: [
@@ -187,7 +187,7 @@ export default {
           img: 'https://img.js.design/assets/img/64bca8edf4653c66a96fa526.png#c0adaa0c95f5c5a0437fb6d6be2da82f',
           textleft: 130,
           texttop: 140,
-          wordSize: 36,
+          wordSize: 30,
 
           // 点击后展开的内容
           hexagonText: [
@@ -196,8 +196,8 @@ export default {
             },
           ],
           hexagonTextWidth: 585,
-          hexagonTextLeft: '1225px',
-          hexagonTextTop: '170px',
+          hexagonTextLeft: '1200px',
+          hexagonTextTop: '200px',
           hexagonImg: 'https://img.js.design/assets/img/64c39705c6cd30383b022e31.png#a136171c40490f836553b848de1d14a0',
           hexagonImgLeft: '100px',
           hexagonImgTop: '150px',
@@ -215,7 +215,7 @@ export default {
           img: 'https://img.js.design/assets/img/64bca9cabc7a42199ce33a6c.png#fe6f79c1b7326ec4ef0e9cd78fe904c0',
           textleft: 130,
           texttop: 110,
-          wordSize: 32,
+          wordSize: 30,
 
           // 点击后展开的内容
           hexagonText: [
@@ -225,7 +225,7 @@ export default {
           ],
           hexagonTextWidth: 600,
           hexagonTextLeft: '1225px',
-          hexagonTextTop: '120px',
+          hexagonTextTop: '150px',
           hexagonImg: require('@/assets/pictures/4TrainModel.png'),
           hexagonImgLeft: '100px',
           hexagonImgTop: '150px',
@@ -554,6 +554,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$text-size: 24px;
 #app {
   width: 1920px;
   height: 1080px;
@@ -601,9 +602,9 @@ export default {
   }
   .description {
     position: absolute;
-    left: 1060px;
+    left: 1090px;
     top: 110px;
-    width: 800px;
+    width: 750px;
     height: 710px;
     padding: 53px;
     line-height: 58px;
@@ -615,7 +616,7 @@ export default {
       margin-bottom: 45px;
     }
     .content {
-      font-size: 36px;
+      font-size: 30px;
       div {
         margin-bottom: 33px;
         transition: all 0.3s;

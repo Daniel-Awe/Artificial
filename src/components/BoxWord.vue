@@ -1,6 +1,12 @@
 <template>
   <div :style="{ display: displayLine ? 'flex' : 'block' }">
-    <div class="cueword" v-for="(item, id) in boxword" :key="id" :class="{ textindent: this.textIndent }" :style="{ width: this.boxWidth + 'px', fontSize: this.wordSize + 'px', marginTop: this.wordMarginTop + 'px', textAlign: wordCenter ? 'center' : 'left', lineHeight: this.wordSize + 15 + 'px' }">
+    <div
+      class="cueword"
+      v-for="(item, id) in boxword"
+      :key="id"
+      :class="{ textindent: this.textIndent }"
+      :style="{ width: this.boxWidth + 'px', fontSize: this.wordSize + 'px', marginTop: this.wordMarginTop + 'px', textAlign: wordCenter ? 'center' : 'left', lineHeight: this.wordSize + 15 + 'px', lineHeight: lineHeight }"
+    >
       <div>{{ item.text }}</div>
     </div>
   </div>
@@ -15,18 +21,22 @@ export default {
       default: undefined,
       required: true,
     },
+    // 开头缩进
     textIndent: {
       type: Boolean,
       default: true,
     },
+    // 盒子宽度
     boxWidth: {
       type: Number,
       default: 1550,
     },
+    // 文字大小
     wordSize: {
       type: Number,
-      default: 36,
+      default: 30,
     },
+    // 文字居中
     wordCenter: {
       type: Boolean,
       default: false,
@@ -38,6 +48,10 @@ export default {
     displayLine: {
       type: Boolean,
       default: false,
+    },
+    lineHeight: {
+      type: Number,
+      default: 1.5,
     },
   },
 }

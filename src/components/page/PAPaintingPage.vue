@@ -5,14 +5,14 @@
     <!-- 顶部导航栏 -->
     <TopNavigationBar :sub="PA" :title="title" :backShow="backshow"></TopNavigationBar>
     <div class="body" :style="{ left: Index + 'px' }">
-      <!-- 绘画辅助 -->
+      <!-- 1. 绘画辅助 -->
       <div class="sec">
         <!-- 内容 -->
         <div class="part" v-for="(item, id) in drawingAid" :key="id" :style="{ opacity: this.drawingIndex == id ? '1' : '0', 'z-index': this.drawingIndex === id ? '5' : '1' }">
           <div style="display: flex; justify-content: center; align-items: center">
             <div><img :src="item.img" alt="" style="height: 770px" /></div>
           </div>
-          <div style="text-align: center; font-size: 36px; color: #fff; width: 1600px; line-height: 52px">{{ item.tips }}</div>
+          <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px; margin-top: 7px">{{ item.tips }}</div>
         </div>
 
         <!-- 两侧的箭头 -->
@@ -27,12 +27,12 @@
           <div class="circleButton" v-for="(item, id) in drawingAid" :key="id" :style="{ background: this.drawingIndex == id ? 'rgba(105, 255, 246, 1)' : 'transparent' }" @click="this.drawingIndex = id"></div>
         </div>
       </div>
-      <!-- 辅助建筑设计 -->
+      <!-- 2. 辅助建筑设计 -->
       <div class="sec">
         <!-- 内容 -->
         <div class="part designA" :style="{ opacity: this.designIndex == 0 ? '1' : '0', 'z-index': this.designIndex === 0 ? '5' : '1' }">
           <div class="tips">{{ this.design[0].tips }}</div>
-          <BoxWord :boxword="this.design[0].content" :wordMarginTop="70" :textIndent="false"></BoxWord>
+          <BoxWord :boxword="this.design[0].content" :wordMarginTop="60" :wordSize="30" :lineHeight="1.75" :textIndent="false"></BoxWord>
         </div>
         <div class="part designB" :style="{ opacity: this.designIndex == 1 ? '1' : '0', 'z-index': this.designIndex === 1 ? '5' : '1' }">
           <div style="display: flex">
@@ -55,6 +55,7 @@
         </div>
 
         <!-- 两侧的箭头 -->
+
         <div class="left-arrow" :style="{ display: this.designIndex == 0 ? 'none' : 'block' }">
           <img :src="leftArrowImg" alt="" @click="this.designIndex -= 1" />
         </div>
@@ -73,8 +74,8 @@
           <div style="display: flex; justify-content: center; align-items: center">
             <div><img :src="item.img" alt="" style="height: 700px" /></div>
           </div>
-          <div style="text-align: center; font-size: 36px; color: #fff; width: 1600px; line-height: 52px; margin-top: 25px">{{ item.tips }}</div>
-          <div style="text-align: center; font-size: 36px; color: #fff; width: 1600px; line-height: 52px" v-if="item.tips1">{{ item.tips1 }}</div>
+          <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px; margin-top: 25px">{{ item.tips }}</div>
+          <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px" v-if="item.tips1">{{ item.tips1 }}</div>
         </div>
 
         <!-- 两侧的箭头 -->
@@ -344,6 +345,7 @@ export default {
     position: absolute;
     left: 70px;
     top: 410px;
+    z-index: 10;
     cursor: pointer;
     img {
       height: 55px;
@@ -353,6 +355,7 @@ export default {
     position: absolute;
     right: 30px;
     top: 410px;
+    z-index: 10;
     cursor: pointer;
     img {
       height: 55px;

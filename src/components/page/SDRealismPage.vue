@@ -472,6 +472,7 @@ export default {
 .image-container {
   width: 100%;
   height: 140vh; /* 设置最大高度，超出部分将滚动 */
+  max-height: 1000px;
   overflow-y: auto; /* 添加垂直滚动条 */
   text-align: center; /* 如果需要居中图片 */
 }

@@ -10,9 +10,9 @@
       <!-- 1. 基本介绍 -->
       <div class="sec" style="margin-left: 200px; margin-top: 50px">
         <ArtWord :text="introDatas[0].subtitle" style="margin-bottom: 20px"></ArtWord>
-        <BoxWord :boxword="introDatas[0].text" style="margin-bottom: 50px"></BoxWord>
+        <BoxWord :boxword="introDatas[0].text" style="margin-bottom: 70px; margin-left: 20px" :wordSize="30" :lineHeight="1.75"></BoxWord>
         <ArtWord :text="introDatas[1].subtitle" style="margin-bottom: 20px"></ArtWord>
-        <BoxWord :boxword="introDatas[1].text"></BoxWord>
+        <BoxWord :boxword="introDatas[1].text" style="margin-left: 20px" :wordSize="30" :lineHeight="1.75"></BoxWord>
       </div>
       <!-- 2. 本地搭建 -->
       <div class="sec" style="position: relative">
@@ -35,7 +35,7 @@
           <div class="low">约<font style="color: rgba(255, 141, 26, 1)">1-2分钟</font>一张图，可绘制分辨率512*512像素</div>
           <div class="recom">约<font style="color: rgba(255, 141, 26, 1)">10-30秒</font>一张图，可绘制分辨率1024*1024像素</div>
         </div>
-        <BoxWord :boxword="localInstallDatas.text" :boxWidth="1600" :wordSize="30" style="position: absolute; left: 25px; top: 640px"></BoxWord>
+        <BoxWord :boxword="localInstallDatas.text" :boxWidth="1600" :wordSize="30" :lineHeight="1.75" style="position: absolute; left: 25px; top: 640px; margin-left: 20px"></BoxWord>
       </div>
       <!-- 3. 交互拟真 -->
       <div class="sec">

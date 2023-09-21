@@ -3,7 +3,7 @@
     <!-- 侧边栏 -->
     <SideNavigationBar></SideNavigationBar>
     <!-- ‘AI绘画’图片 -->
-    <img :src="aiImg" alt="" class="aiImg" />
+    <!-- <img :src="aiImg" alt="" class="aiImg" /> -->
 
     <!-- 按钮 -->
     <div class="button Ai" v-for="(item, id) in IndexButtons" :key="id" :style="{ height: item.isExpanded ? item.buttonHeight : '100px', left: item.left, top: item.top, width: item.buttonWidth }" @mouseover="ShowTips(id)" @mouseout="HideTips(id)">

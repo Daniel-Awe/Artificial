@@ -1010,6 +1010,7 @@ export default {
                 .analys {
                   transition: all 0.25s;
                   position: absolute;
+                  font-size: 34px;
                   left: 10px;
                   top: 130px;
                   font-weight: normal;

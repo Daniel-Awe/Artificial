@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="bigbox">
-      <img :src="bgImg" alt="" class="bgImg" />
+      <video id="video" src="./assets/videos/background.mp4" class="bgVideo" autoplay muted loop></video>
+
       <audio ref="audioPlayer" preload="auto" autoplay v-if="audioIsPlaying" loop>
         <source src="./assets/audios/Legacy.mp3" type="audio/mpeg" />
       </audio>
@@ -13,6 +14,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'App',
 
@@ -128,6 +130,12 @@ li {
     transform-origin: left top;
 
     .bgImg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 9;
+    }
+    .bgVideo {
       position: absolute;
       left: 0;
       top: 0;

@@ -13,21 +13,21 @@
             <SDInstallTitle :numberImg="LocalInstall[0].numberImg" :title="LocalInstall[0].title"></SDInstallTitle>
             <div class="seccommon a">
               <img :src="LocalInstall[0].introImg1" alt="" />
-              <BoxWord :boxword="LocalInstall[0].tips" :wordSize="30" :wordCenter="true" :wordMarginTop="30"></BoxWord>
-              <BoxWord :boxword="LocalInstall[0].intro" :wordMarginTop="30"></BoxWord>
+              <BoxWord :boxword="LocalInstall[0].tips" :wordSize="24" :wordCenter="true" :wordMarginTop="25"></BoxWord>
+              <BoxWord :boxword="LocalInstall[0].intro" :wordMarginTop="25" :wordSize="30" :lineHeight="1.75"></BoxWord>
             </div>
           </div>
           <div class="expand qwe">
             <div class="conbox">
-              <BoxWord :boxword="LocalInstall[0].contentTitle" :textIndent="false"></BoxWord>
-              <BoxWord :boxword="LocalInstall[0].content" :boxWidth="1600"></BoxWord>
+              <BoxWord :boxword="LocalInstall[0].contentTitle" :textIndent="false" :wordSize="36"></BoxWord>
+              <BoxWord :boxword="LocalInstall[0].content" :boxWidth="1600" :wordSize="30" :lineHeight="1.75" :wordMarginTop="15"></BoxWord>
             </div>
           </div>
         </div>
-        <div class="SideButton" style="position: absolute; height: 900px; padding-top: 450px; right: 10px; top: 0; font-size: 30px; width: 50px; text-align: center">
+        <div class="SideButton" style="position: absolute; height: 900px; padding-top: 450px; right: 10px; top: 0; font-size: 24px; width: 40px; text-align: center">
           <div class="clic" @click="exchangeGit()">
             <div class="trri" :class="{ left: this.isGit }"></div>
-            <div class="buto" style="transform: translateY(-50%); margin: auto; color: #fff; cursor: pointer">{{ installGitCh }}</div>
+            <div class="buto" style="transform: translateY(-62%); margin: auto; color: #fff; cursor: pointer">{{ installGitCh }}</div>
           </div>
         </div>
       </div>
@@ -38,25 +38,25 @@
             <SDInstallTitle :numberImg="LocalInstall[1].numberImg" :title="LocalInstall[1].title"></SDInstallTitle>
             <div class="seccommon b">
               <img :src="LocalInstall[1].introImg1" alt="" />
-              <div class="Bboxword">
+              <div class="Bboxword" style="font-size: 24px">
                 <div>{{ LocalInstall[1].tips[0].text }}</div>
                 <div>{{ LocalInstall[1].tips[1].text }}</div>
               </div>
-              <BoxWord :boxword="LocalInstall[1].intro" :wordMarginTop="30" :boxWidth="1600"></BoxWord>
+              <BoxWord :boxword="LocalInstall[1].intro" :wordMarginTop="20" :boxWidth="1600" :lineHeight="1.75"></BoxWord>
             </div>
           </div>
           <div class="expand qwe">
             <div class="conbox">
-              <BoxWord :boxword="LocalInstall[1].contentTitle" :textIndent="false"></BoxWord>
-              <BoxWord :boxword="LocalInstall[1].content" :boxWidth="1620"></BoxWord>
+              <BoxWord :boxword="LocalInstall[1].contentTitle" :textIndent="false" :wordSize="36"></BoxWord>
+              <BoxWord :boxword="LocalInstall[1].content" :boxWidth="1600" :wordSize="30" :lineHeight="1.75" :wordMarginTop="15"></BoxWord>
             </div>
           </div>
         </div>
 
-        <div class="SideButton" style="position: absolute; height: 900px; padding-top: 450px; right: 10px; top: 0; font-size: 30px; width: 50px; text-align: center">
+        <div class="SideButton" style="position: absolute; height: 900px; padding-top: 450px; right: 10px; top: 0; font-size: 24px; width: 40px; text-align: center">
           <div class="clic" @click="exchangePython()">
             <div class="trri" :class="{ left: this.isPython }"></div>
-            <div class="buto" style="transform: translateY(-50%); margin: auto; color: #fff; cursor: pointer">{{ installPython }}</div>
+            <div class="buto" style="transform: translateY(-62%); margin: auto; color: #fff; cursor: pointer">{{ installPython }}</div>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
             <div class="image"><img :src="LocalInstall[2].introImg1" alt="" /></div>
             <div>
               <BoxWord :boxword="LocalInstall[2].intro" :textIndent="false" :wordMarginTop="120"></BoxWord>
-              <BoxWord :boxword="LocalInstall[2].tips" style="margin-top: 52px" :textIndent="false" :wordSize="30" :boxWidth="740"></BoxWord>
+              <BoxWord :boxword="LocalInstall[2].tips" style="margin-top: 52px" :textIndent="false" :wordSize="30" :lineHeight="1.75" :boxWidth="740"></BoxWord>
             </div>
           </div>
           <img :src="LocalInstall[2].introImg2" alt="" />
@@ -79,8 +79,8 @@
         <SDInstallTitle :numberImg="LocalInstall[3].numberImg" :title="LocalInstall[3].title"></SDInstallTitle>
         <div class="seccommon d">
           <img :src="LocalInstall[3].introImg1" alt="" />
-          <BoxWord :boxword="LocalInstall[3].tips" :wordSize="30" :wordCenter="true" :wordMarginTop="30"></BoxWord>
-          <BoxWord :boxword="LocalInstall[3].intro" :wordMarginTop="30"></BoxWord>
+          <BoxWord :boxword="LocalInstall[3].tips" :wordSize="24" :wordCenter="true" :wordMarginTop="20"></BoxWord>
+          <BoxWord :boxword="LocalInstall[3].intro" :wordMarginTop="20" :wordSize="30" :lineHeight="1.75"></BoxWord>
         </div>
       </div>
       <!-- 5. 修改webui-user.bat -->
@@ -89,8 +89,8 @@
         <div class="e">
           <div class="t">
             <img :src="LocalInstall[4].introImg1" alt="" />
-            <div style="margin-top: 90px">
-              <BoxWord :boxword="LocalInstall[4].intro" :textIndent="false"></BoxWord>
+            <div style="margin-top: 70px">
+              <BoxWord :boxword="LocalInstall[4].intro" :textIndent="false" :lineHeight="3"></BoxWord>
             </div>
           </div>
           <img :src="LocalInstall[4].introImg2" alt="" />
@@ -550,7 +550,7 @@ export default {
       margin: 25px 0 0 50px;
     }
     .d {
-      transform: translate(120px, -80px);
+      transform: translate(120px, -60px);
 
       img {
         margin-left: 150px;

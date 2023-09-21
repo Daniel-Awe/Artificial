@@ -7,7 +7,7 @@
       :style="{
         left: sidebarVisible ? '1920px' : '',
         transform: sidebarVisible ? 'translateX(-100%)' : 'translateX(0%)',
-        backgroundColor: sidebarVisible ? '#727272' : '#A6A6A6',
+        backgroundColor: sidebarVisible ? '#727272' : 'rgba(229, 229, 229, 0.3)',
       }"
       @click="toggleSidebar"
     >
@@ -466,7 +466,7 @@ export default {
   height: 1080px;
   background-color: rgb(166, 166, 166);
   position: fixed;
-
+  cursor: pointer;
   transition: all 0.65s;
   z-index: 999;
   /* 箭头 */

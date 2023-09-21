@@ -14,7 +14,7 @@
               <ArtWord :text="this.introDatas[0].subtitle"></ArtWord>
               <div class="tip" style="opacity: 0">点击展开</div>
             </div>
-            <BoxWord class="boxword" :boxWidth="1600" :boxword="this.introDatas[0].text"></BoxWord>
+            <BoxWord class="boxword" :boxWidth="1600" :wordSize="30" :wordMarginTop="10" :lineHeight="1.75" :boxword="this.introDatas[0].text"></BoxWord>
           </div>
           <!-- ChatGPT -->
           <div class="part SDWIntro" style="margin-top: 10px; position: relative">
@@ -22,7 +22,7 @@
               <ArtWord :text="this.introDatas[1].subtitle"></ArtWord>
               <div class="tip" style="opacity: 1">点击展开</div>
             </div>
-            <BoxWord class="boxword" :boxWidth="900" :boxword="this.introDatas[1].text"></BoxWord>
+            <BoxWord class="boxword" :boxWidth="900" :boxword="this.introDatas[1].text" :wordSize="30" :lineHeight="1.75"></BoxWord>
             <img :src="this.introDatas[1].img1" alt="" style="width: 415px; margin: 20px 0 0 25px" />
             <img :src="this.introDatas[1].img2" alt="" class="biger" :style="{ left: this.introDatas[1].img2Left + 'px', top: this.introDatas[1].img2Top + 'px' }" v-show="this.Expanded" />
           </div>
@@ -35,7 +35,7 @@
           v-for="(item, id) in localInstallDatas"
           :key="id"
           style="position: absolute"
-          :style="{ left: item.left + 'px', top: item.top + 'px' }"
+          :style="{ left: item.left + 'px', top: item.top + 'px', paddingLeft: item.pad + 'px' }"
           @click="
             this.$router.push({
               name: 'SDInstallPage',
@@ -49,8 +49,10 @@
         >
           {{ item.text }}
         </div>
-        <ArrowRight :length="arrow.length" v-for="(arrow, id) in ArrowSite" :key="id" style="position: absolute" :style="{ left: arrow.left + 'px', top: arrow.top + 'px' }"></ArrowRight>
-        <ArrowCanvasSpecial style="position: absolute; left: 70px; top: 215px" :x1="70" :x2="-1650" :x3="-1470" :y1="200" :y2="380"></ArrowCanvasSpecial>
+        <!-- 箭头 -->
+        <img src="../../assets/pictures/ArrowLines/SDUpgrade.png" style="position: absolute; left: 140px; top: 200px" alt="" />
+        <!-- <ArrowRight :length="arrow.length" v-for="(arrow, id) in ArrowSite" :key="id" style="position: absolute" :style="{ left: arrow.left + 'px', top: arrow.top + 'px' }"></ArrowRight>
+        <ArrowCanvasSpecial style="position: absolute; left: 70px; top: 215px" :x1="70" :x2="-1650" :x3="-1470" :y1="200" :y2="380"></ArrowCanvasSpecial> -->
       </div>
       <!-- 3. 交互拟真 -->
       <div class="sec jhnz" style="margin-left: 115px">
@@ -76,9 +78,9 @@ import SideNavigationBar from '../SideNavigationBar.vue'
 import BottomNavigationBar from '../BottomNavigationBar.vue'
 import ArtWord from '../ArtWord.vue'
 import BoxWord from '../BoxWord.vue'
-import ArrowRight from '../ArrowRight.vue'
+// import ArrowRight from '../ArrowRight.vue'
 import RectangleBorder from './AIdevelopPage/RectangleBorder.vue'
-import ArrowCanvasSpecial from './AIdevelopPage/ArrowCanvasSpecial.vue'
+// import ArrowCanvasSpecial from './AIdevelopPage/ArrowCanvasSpecial.vue'
 export default {
   name: 'SDUpgradePage',
   components: {
@@ -87,8 +89,8 @@ export default {
     BottomNavigationBar,
     ArtWord,
     BoxWord,
-    ArrowRight,
-    ArrowCanvasSpecial,
+    // ArrowRight,
+    // ArrowCanvasSpecial,
     RectangleBorder,
   },
   data() {
@@ -127,38 +129,43 @@ export default {
       localInstallDatas: [
         {
           text: '安装Git',
-          left: 150,
-          top: 175,
+          left: 130,
+          top: 177,
+          pad: 29,
         },
         {
           text: '安装python3.10版',
-          left: 440,
-          top: 175,
+          left: 458,
+          top: 177,
+          pad: 30,
         },
         {
           text: '安装stable diffusion-webui',
-          left: 950,
-          top: 175,
+          left: 979,
+          top: 177,
+          pad: 23,
         },
         {
           text: '下载model',
-          left: 1550,
-          top: 175,
+          left: 1603,
+          top: 177,
+          pad: 27,
         },
         {
           text: '修改webui-user.bat',
-          left: 300,
-          top: 550,
+          left: 325,
+          top: 572,
         },
         {
           text: '下载依赖，修改launch.py',
-          left: 900,
-          top: 550,
+          left: 925,
+          top: 572,
+          pad: 28,
         },
         {
           text: '运行',
-          left: 1500,
-          top: 550,
+          left: 1533,
+          top: 572,
         },
       ],
 
@@ -371,7 +378,7 @@ export default {
           position: absolute;
           right: 0px;
           top: 35%;
-          font-size: 24px;
+          font-size: 20px;
           line-height: 35px;
           color: #fff;
           transition: all 0.3s;
@@ -404,7 +411,7 @@ export default {
     border: 4px solid rgba(255, 255, 255, 1);
     font-size: 30px;
     color: #fff;
-    padding: 18px 33px;
+    padding: 15px 29px;
     line-height: 45px;
     cursor: pointer;
     z-index: 5;

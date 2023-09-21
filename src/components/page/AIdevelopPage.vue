@@ -7,16 +7,12 @@
 
     <div class="body" :style="{ left: Index + 'px' }">
       <!-- 发展过程 -->
-      <div class="sec">
-        <div class="timenode" v-for="(item, id) in developdatas" :key="id" :style="{ left: item.left, top: item.top }">
-          <div class="thing">
-            {{ item.thing }}
-            <div class="year">{{ item.year }}</div>
-          </div>
-          <div class="intro" :style="{ width: item.introWidth }">{{ item.intro }}</div>
-        </div>
-        <ArrowRight style="position: absolute" v-for="(arrow, id) in arrowdatas" :key="id" :length="arrow.length" :style="{ left: arrow.left, top: arrow.top }"></ArrowRight>
-        <ArrowCanvasSpecial style="position: absolute; left: -130px; top: 195px" :x1="250" :x2="-1450" :x3="-1390" :y1="290" :y2="405"></ArrowCanvasSpecial>
+      <div class="sec" style="padding: 90px 0 0 180px">
+        <!-- 箭头线条 -->
+        <img src="../../assets/pictures/ArrowLines/AIDevelop.png" style="position: absolute; left: 117px; top: 205px" alt="" />
+        <!-- <ArrowRight style="position: absolute" v-for="(arrow, id) in arrowdatas" :key="id" :length="arrow.length" :style="{ left: arrow.left, top: arrow.top }"></ArrowRight>
+          <ArrowCanvasSpecial style="position: absolute; left: -130px; top: 195px" :x1="250" :x2="-1450" :x3="-1390" :y1="290" :y2="405"></ArrowCanvasSpecial> -->
+        <TimeNode :develops="item" style="position: absolute" v-for="(item, id) in developdatas" :key="id" :style="{ left: item.left, top: item.top }"></TimeNode>
       </div>
 
       <!-- 拓展介绍 -->
@@ -65,15 +61,25 @@
 import TopNavigationBar from '../TopNavigationBar.vue'
 import SideNavigationBar from '../SideNavigationBar.vue'
 import BottomNavigationBar from '../BottomNavigationBar.vue'
-import ArrowRight from '../ArrowRight.vue'
-import ArrowCanvasSpecial from './AIdevelopPage/ArrowCanvasSpecial.vue'
+// import ArrowRight from '../ArrowRight.vue'
+// import ArrowCanvasSpecial from './AIdevelopPage/ArrowCanvasSpecial.vue'
 import RectangleBorder from './AIdevelopPage/RectangleBorder.vue'
 
 import ArtWord from '../ArtWord.vue'
+import TimeNode from './AIdevelopPage/TimeNode.vue'
 
 export default {
   name: 'AIdevelopPage',
-  components: { TopNavigationBar, SideNavigationBar, BottomNavigationBar, ArrowRight, ArrowCanvasSpecial, RectangleBorder, ArtWord },
+  components: {
+    TopNavigationBar,
+    SideNavigationBar,
+    BottomNavigationBar,
+    // ArrowRight,
+    // ArrowCanvasSpecial,
+    RectangleBorder,
+    ArtWord,
+    TimeNode,
+  },
   data() {
     return {
       title: '人工智能',
@@ -117,7 +123,7 @@ export default {
           intro: '在1950年，阿兰·图灵提出图灵测试机，大意是将人和机器放在一个小黑屋里与屋外的人对话，如果屋外的人分不清对话者是人类还是机器，那么这台机器就拥有像人一样的智能。',
           introWidth: '500px', //介绍框的长度
           left: '180px',
-          top: '155px',
+          top: '130px',
         },
         {
           year: '1956年',
@@ -125,7 +131,7 @@ export default {
           intro: '在1956年达特茅斯会议上正式提出使用了人工智能这一术语，标志着人工智能学科的诞生。而后人工智能迅速发展，产生了诸多流派。',
           introWidth: '450px',
           left: '780px',
-          top: '155px',
+          top: '130px',
         },
         {
           year: ' ',
@@ -133,7 +139,7 @@ export default {
           intro: '机器学习的加入，推着人工智能向更加智能的方向迈进，而后诞生了深度学习、神经网络等诸多概念。',
           introWidth: '400px',
           left: '1380px',
-          top: '155px',
+          top: '130px',
         },
         {
           year: ' ',
@@ -141,7 +147,7 @@ export default {
           intro: '硬件、算法、大数据三个因素在各个领域的突破达到一定程度时，带来了人工智能的大爆发。',
           introWidth: '500px',
           left: '180px',
-          top: '560px',
+          top: '530px',
         },
         {
           year: '2016年',
@@ -149,7 +155,7 @@ export default {
           intro: '围棋一直被称为人类与AI对决的最后的阵地，在2016年，AlphaGO战胜人类顶尖的选手，让人工智能进入到大众视野，也证明了AI的强大。',
           introWidth: '450px',
           left: '780px',
-          top: '560px',
+          top: '530px',
         },
       ],
 
@@ -283,6 +289,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$text-size: 24px;
 #app {
   width: 1920px;
   height: 1080px;
@@ -296,7 +303,7 @@ export default {
   display: flex;
   position: absolute;
   top: 9%;
-  width: 3840px;
+  width: 5760px;
   height: 900px;
   transition: all 0.5s;
   opacity: 0;
@@ -313,47 +320,7 @@ export default {
     position: relative;
     width: 1920px;
   }
-  .timenode {
-    position: absolute;
-    color: #fff;
-    text-align: center;
-    transition: all 0.3s;
-    font-weight: 400;
-    z-index: 5;
-    cursor: pointer;
 
-    .thing {
-      position: relative;
-      height: 80px;
-      line-height: 76px;
-      width: fit-content;
-      border: 4px solid rgba(255, 255, 255, 1);
-      font-size: 30px;
-      padding: 0 30px;
-      margin-bottom: 20px;
-      .year {
-        position: absolute;
-        left: 50%;
-        margin: 0;
-        top: -100%;
-        min-width: 120px !important;
-        transform: translateX(-45%);
-        font-size: 30px;
-      }
-    }
-    .intro {
-      font-size: 24px;
-      width: 400px;
-      text-align: left;
-      line-height: 35px;
-    }
-    &:hover {
-      color: rgba(105, 255, 246, 1);
-      .thing {
-        border-color: rgba(105, 255, 246, 1);
-      }
-    }
-  }
   .expand {
     height: 100%;
     padding: 30px 0;
@@ -377,7 +344,7 @@ export default {
           position: absolute;
           right: 0px;
           top: 35%;
-          font-size: 24px;
+          font-size: 20px;
           line-height: 35px;
           color: #fff;
           transition: all 0.3s;
@@ -403,7 +370,7 @@ export default {
         }
         .text {
           width: 85%;
-          font-size: 30px;
+          font-size: $text-size;
           color: #fff;
           line-height: 50px;
         }
@@ -415,7 +382,7 @@ export default {
         padding: 0 0 20px 40px;
         text-indent: 2em;
         width: 100%;
-        font-size: 30px;
+        font-size: $text-size;
         color: #fff;
         line-height: 45px;
       }
