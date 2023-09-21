@@ -92,8 +92,8 @@
                   <div class="qp">题库内共有{{ this.correctNumber }}道试题，答对{{ this.correctNumber - this.mistakeCollection.length }}道，答错{{ this.mistakeCollection.length }}道</div>
                   <div class="qp">正确率{{ resultPercent }}%</div>
                   <div class="qp">
-                    <span v-if="this.mistakeCollection.length == 0">您可以选择重做错题或者返回目录重新开始小测</span>
-                    <span v-if="this.mistakeCollection.length != 0">没有错题，您可以选择返回目录重新开始小测</span>
+                    <span v-if="this.mistakeCollection.length != 0">您可以选择重做错题或者返回目录重新开始小测</span>
+                    <span v-if="this.mistakeCollection.length == 0">没有错题，您可以选择返回目录重新开始小测</span>
                   </div>
                   <div class="buttonqp">
                     <div v-if="this.mistakeCollection.length != 0">
