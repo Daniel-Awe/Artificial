@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="bigbox">
-      <video id="video" src="./assets/videos/background.mp4" class="bgVideo" autoplay muted loop></video>
+      <img :src="bgImg" alt="" class="bgImg" />
+      <video id="video" src="./assets/videos/background.mp4" class="bgVideo" autoplay muted loop v-if="this.currentRouteComponent == 'IndexPage'"></video>
 
       <audio ref="audioPlayer" preload="auto" autoplay v-if="audioIsPlaying" loop>
         <source src="./assets/audios/Legacy.mp3" type="audio/mpeg" />
@@ -26,7 +27,19 @@ export default {
       bgImg: 'https://img.js.design/assets/img/64a6c335c6ce3224527c27a4.png#d43e855f4cd851231b618daf33a7a2b4',
       viewportWidth: window.innerWidth,
       viewportHeight: window.innerHeight,
+      isOpen: false,
+      currentRouteComponent: null,
     }
+  },
+  created() {
+    // 初始化时获取当前路由对应的组件名
+    this.currentRouteComponent = this.$route.name
+  },
+  watch: {
+    // 监听路由变化，更新当前路由对应的组件名
+    $route() {
+      this.currentRouteComponent = this.$route.name
+    },
   },
   mounted() {
     // this.handleResize()

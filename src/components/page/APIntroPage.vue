@@ -12,7 +12,10 @@
       <div class="sec">
         <!-- 流程图 -->
 
-        <div class="lab" :class="{ isHoverLab: item.isHover }" v-for="(item, id) in datas" :key="id" :style="{ left: item.left, top: item.top, background: item.bgcolor }" @mouseover="ShowChange(id)" @mouseout="HideChange(id)">{{ item.label }}</div>
+        <div class="lab" :class="{ isHoverLab: item.isHover }" style="z-index: 5" v-for="(item, id) in datas" :key="id" :style="{ left: item.left, top: item.top }" @mouseover="ShowChange(id)" @mouseout="HideChange(id)">{{ item.label }}</div>
+
+        <div class="ad" :style="{ borderRadius: this.datas[0].isHover ? '30px' : '' }" style="transition: all 0.3s; width: 245px; height: 85px; background-color: rgba(85, 144, 212, 1); position: absolute; left: 100px; top: 400px"></div>
+        <div class="ad" :style="{ borderRadius: this.datas[2].isHover ? '30px' : '' }" style="transition: all 0.3s; width: 245px; height: 85px; background-color: rgba(246, 147, 36, 1); position: absolute; left: 730px; top: 400px"></div>
         <!-- 文字描述 -->
         <div class="description">
           <ArtWord :text="'AI绘画过程'" style="margin: 0 0 30px 200px"></ArtWord>
@@ -20,11 +23,14 @@
             <div v-for="(txt, key) in datas" :key="key" :class="{ isHoverText: txt.isHover }">{{ txt.text }}</div>
           </div>
         </div>
-        <!-- 矩形 -->
-        <RectangleStrange style="position: absolute; left: 1050px; top: 75px"></RectangleStrange>
         <!-- 箭头 -->
-        <ArrowRight style="position: absolute" v-for="(item, id) in ArrowRightDatas" :key="id" :style="{ left: item.left, top: item.top }" :length="item.length"></ArrowRight>
-        <ArrowDown style="position: absolute" v-for="(item, id) in ArrowDownDatas" :key="id" :style="{ left: item.left, top: item.top }" :length="item.length"></ArrowDown>
+        <img src="../../assets/pictures/ArrowLines/AIPainting.png" style="position: absolute; left: 350px; top: 95px" alt="" />
+        <img :src="deconateImg" alt="" class="deconateImg1" />
+        <img :src="deconateImg" alt="" class="deconateImg2" /><!-- 矩形 -->
+        <!-- <RectangleStrange style="position: absolute; left: 1050px; top: 75px"></RectangleStrange> -->
+        <!-- 箭头 -->
+        <!-- <ArrowRight style="position: absolute" v-for="(item, id) in ArrowRightDatas" :key="id" :style="{ left: item.left, top: item.top }" :length="item.length"></ArrowRight>
+        <ArrowDown style="position: absolute" v-for="(item, id) in ArrowDownDatas" :key="id" :style="{ left: item.left, top: item.top }" :length="item.length"></ArrowDown> -->
       </div>
       <!-- 使用原理 -->
       <div class="sec" style="position: relative">
@@ -56,14 +62,23 @@
 import TopNavigationBar from '../TopNavigationBar.vue'
 import SideNavigationBar from '../SideNavigationBar.vue'
 import BottomNavigationBar from '../BottomNavigationBar.vue'
-import RectangleStrange from './APPage/RectangleStrange.vue'
+// import RectangleStrange from './APPage/RectangleStrange.vue'
 import ArtWord from '../ArtWord.vue'
-import ArrowRight from '../ArrowRight.vue'
-import ArrowDown from '../ArrowDown.vue'
+// import ArrowRight from '../ArrowRight.vue'
+// import ArrowDown from '../ArrowDown.vue'
 import BoxWord from '../BoxWord.vue'
 export default {
   name: 'APIntroPage',
-  components: { TopNavigationBar, SideNavigationBar, BottomNavigationBar, RectangleStrange, ArrowRight, ArrowDown, ArtWord, BoxWord },
+  components: {
+    TopNavigationBar,
+    SideNavigationBar,
+    BottomNavigationBar,
+    // RectangleStrange,
+    // ArrowRight,
+    // ArrowDown,
+    ArtWord,
+    BoxWord,
+  },
   data() {
     return {
       title: 'AI绘画',
@@ -74,13 +89,14 @@ export default {
       backshow: false,
       // 头部导航的返回按钮显示
       TopnavBackshow: false,
+      deconateImg: 'https://img.js.design/assets/img/64acfe418bcac05a23546ac6.png#e0349481be4c2a43efe316b9bbcff2d5',
       // 绘制过程数据
       datas: [
         {
           label: '输入关键词',
           bgcolor: 'rgba(85, 144, 212, 1)',
           text: '1.输入关键词，具体的单词会被ai转换成图像特征向量',
-          left: '100px',
+          left: '105px',
           top: '400px',
           isHover: false,
         },
@@ -88,7 +104,7 @@ export default {
           label: '图像特征向量',
           bgcolor: 'transparent',
           text: '2.图像特征向量加上一张随机调出的噪声图一起进入到图像编码器里',
-          left: '400px',
+          left: '415px',
           top: '400px',
           isHover: false,
         },
@@ -96,21 +112,21 @@ export default {
           label: '图像编码器',
           bgcolor: 'rgba(246, 147, 36, 1)',
           text: '3.图像编码器会根据图像特征向量把噪声图逐步降噪成一张新的图片',
-          left: '720px',
+          left: '730px',
           top: '400px',
           isHover: false,
         },
         {
           label: '随机噪点图片',
           bgcolor: 'transparent',
-          left: '720px',
+          left: '730px',
           top: '250px',
           isHover: false,
         },
         {
           label: '生成图片',
           bgcolor: 'transparent',
-          left: '720px',
+          left: '730px',
           top: '550px',
           isHover: false,
         },
@@ -595,7 +611,7 @@ $text-size: 24px;
     font-size: 30px;
     color: #fff;
     line-height: 83px;
-    padding: 0 37px;
+    padding: 0 33px;
     text-align: center;
     transition: all 0.3s;
     cursor: pointer;
@@ -667,5 +683,21 @@ $text-size: 24px;
 }
 .isHoverText {
   color: rgba(105, 255, 246, 1);
+}
+
+.deconateImg1 {
+  position: absolute;
+  width: 310px;
+  left: 1000px;
+  top: 70px;
+  transform: scaleX(-1);
+}
+.deconateImg2 {
+  position: absolute;
+  width: 300px;
+  left: 1600px;
+  top: 420px;
+  z-index: 5;
+  transform: scaleY(-1);
 }
 </style>

@@ -25,8 +25,8 @@
     >
       <!-- 背景 -->
       <div class="backg" style="width: 100%; height: 100%; position: relative">
-        <div class="block" style="width: 100%; height: 100%; background-color: rgba(43, 43, 43, 0.8); backdrop-filter: blur(10px); position: absolute; top: 0; left: 0"></div>
-        <img src="../assets/pictures/SidenavBackground.png" alt="" style="width: 100%; position: absolute; left: 0; top: 0" />
+        <div class="block" style="width: 100%; height: 100%; background-color: rgba(43, 43, 43, 0.8); backdrop-filter: blur(14px); position: absolute; top: 0; left: 0"></div>
+        <img src="../assets/pictures/SidenavBackground.png" alt="" style="height: 100%; position: absolute; left: 0; top: 0" />
       </div>
       <!-- 蒙版 -->
       <!-- 线条 -->

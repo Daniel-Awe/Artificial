@@ -138,7 +138,7 @@ export default {
           thing: '机器学习',
           intro: '机器学习的加入，推着人工智能向更加智能的方向迈进，而后诞生了深度学习、神经网络等诸多概念。',
           introWidth: '400px',
-          left: '1380px',
+          left: '1383px',
           top: '130px',
         },
         {
