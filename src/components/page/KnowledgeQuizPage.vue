@@ -131,6 +131,9 @@ import RectangleLongStrange from './SDIntroPage/RectangleLongStrange.vue'
 import WhiteBoxBorder from './KnowledgeQuiz/WhiteBoxBorder.vue'
 import ArtWord from '../ArtWord.vue'
 import { getTestsDatas } from '@/api/localAPI'
+
+// 题目记录&收藏记录的持久存储
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'KnowledgeQuizPage',
   components: {
@@ -148,7 +151,7 @@ export default {
 
       // 所有的题目
       testDataAll: [],
-      // 选出来的题目
+      // 用户选出来的题目
       testData: [],
       // 跳过的题目
       jumpNumber: 0,
@@ -406,7 +409,39 @@ export default {
       clickIndex: 0,
     }
   },
+  watch: {
+    // 监听 collectionData 的变化，并将变化赋给vuex中的collection
+    collectionData: {
+      handler(newCollect) {
+        // 在 collect 变化时，更新 collections
+        this.$store.commit('setCollections', newCollect)
+        // console.log(this.collections)
+        // console.log('这是watch函数')
+      },
+      deep: true, // 使用 deep 选项，使其深度监听
+    },
+    // categories: {
+    //   handler(newTestRecording) {
+    //     // 在 testRecording 变化时，处理相关逻辑
+    //     this.$store.commit('setTestRecording', newTestRecording)
+    //   },
+    //   deep: true,
+    // },
+  },
+  mounted() {
+    // 在组件创建时调用 action 来获取并设置 collections
+    this.fetchAndSetCollections()
+    // 初始化 collect 与 collections 相同的值
+    this.collectionData = [...this.collections] // 或者 this.collect = this.collections.slice();
+    // console.log(this.collectionData)
+    // console.log('这是新的')
+
+    // this.fetchAndSetData()
+    // this.categories = [...this.testRecording]
+  },
   computed: {
+    // vuex的持久存储
+    ...mapState(['collections', 'testRecording']),
     // 实时监测改值的变化
     Index() {
       return -this.clickIndex * 1920
@@ -447,6 +482,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['fetchAndSetCollections']),
     // 接收底部导航栏的值，
     handleIndex(val) {
       this.clickIndex = val
