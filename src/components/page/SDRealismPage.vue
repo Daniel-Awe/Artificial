@@ -5,7 +5,7 @@
     <!-- 顶部导航栏 -->
     <TopNavigationBar :titleSize="42" :title="title" :sub="this.sub" :backShow="true" :moTitle="'交互拟真'"></TopNavigationBar>
     <div class="body" :style="{ left: Index + 'px' }">
-      <!-- 文生图 -->
+      <!-- 1. 文生图 -->
       <div class="sec">
         <div class="txtTOimg" style="position: relative">
           <div class="top">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <!-- 图生图 -->
+      <!-- 2. 图生图 -->
       <div class="sec">
         <div class="imgTOimg" style="position: relative">
           <div class="top">
@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <!-- 图片后期 -->
+      <!-- 3. 图片后期 -->
       <div class="sec">
         <div class="postimg" style="position: relative">
           <div class="top">
@@ -81,13 +81,13 @@
         </div>
       </div>
     </div>
-    <!-- 问号图标 -->
+    <!-- 问号图标 - 思维导图 -->
     <div class="questionMark">
       <img :src="questionMark" alt="" style="width: 42px; position: absolute; top: 115px; right: 25px; cursor: pointer" @click="this.showModal = true" />
     </div>
-    <!-- 体验 -->
+    <!-- Experience - Stable Diffusion平台 -->
     <div class="experience" @click="this.$router.push({ name: 'IRModelPage', query: { option: this.clickIndex, subnav: this.route[this.clickIndex].push } })">Experience</div>
-    <!-- 流程图 -->
+    <!-- 思维导图 -->
     <div class="modal" v-if="showModal">
       <div class="modal-content">
         <span class="close" @click="showModal = false">×</span>
@@ -122,7 +122,8 @@ export default {
 
       exchangeButton: 'https://img.js.design/assets/element/js_kKWbAec98io/image/d494f3faa2f2fed36c09d12d2617182f36a663c9.png',
       questionMark: 'https://img.js.design/assets/element/js_p7SMi_7MIIk/image/bab77643cea0fa2f258dd061710636a7270c1130.png',
-      // 文生图
+
+      // 1. 文生图
       txtTOimgTitle: [
         {
           text: '文生图步骤',
@@ -171,7 +172,7 @@ export default {
         },
       ],
 
-      // 图生图
+      // 2. 图生图
       imgTOimgTitle: [
         {
           text: '图生图步骤',
@@ -225,7 +226,7 @@ export default {
         },
       ],
 
-      // 图片后期
+      // 3. 图片后期
       postimgTitle: [
         {
           text: '图片后期步骤',

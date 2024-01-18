@@ -1,4 +1,6 @@
 <template>
+  <!-- Stable Diffusion Webui“本地安装”页面 -->
+  <!-- Stable Diffusion Webui -> 进阶原理 -> 本地安装 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
@@ -130,7 +132,7 @@
 import TopNavigationBar from '../TopNavigationBar.vue'
 import SideNavigationBar from '../SideNavigationBar.vue'
 import BottomNavigationBar from '../BottomNavigationBar.vue'
-import SDInstallTitle from './SDPage/SDInstallTitle.vue'
+import SDInstallTitle from './SDInstallPage/SDInstallTitle.vue'
 import BoxWord from '../BoxWord.vue'
 export default {
   name: 'SDInstallPage',

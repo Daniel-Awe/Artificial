@@ -1,4 +1,6 @@
 <template>
+  <!-- AI绘画 页面 -->
+  <!-- AI绘画 -> 入门原理 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>

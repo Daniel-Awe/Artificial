@@ -197,15 +197,18 @@ export default createStore({
     ],
   },
   mutations: {
+    // 全局背景音乐
     setAudioPlaying(state, isPlaying) {
       state.isAudioPlaying = isPlaying
     },
+    // 题库收藏
     setCollections(state, data) {
       state.collections = data
     },
-    setTestRecording(state, data) {
-      state.testRecording = data
-    },
+    // 本来想做 题库记录 的存储
+    // setTestRecording(state, data) {
+    //   state.testRecording = data
+    // },
   },
   actions: {
     playAudio({ commit }) {
@@ -226,17 +229,17 @@ export default createStore({
         console.error('Error fetching data:', error)
       }
     },
-    async fetchAndSetData({ commit }) {
-      try {
-        const testRecordingResponse = await fetch('testRecording_api_endpoint')
-        const testRecordingData = await testRecordingResponse.json()
+    // async fetchAndSetData({ commit }) {
+    //   try {
+    //     const testRecordingResponse = await fetch('testRecording_api_endpoint')
+    //     const testRecordingData = await testRecordingResponse.json()
 
-        // 提交 mutations 将数据设置到对应的状态中
-        commit('setTestRecording', testRecordingData)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    },
+    //     // 提交 mutations 将数据设置到对应的状态中
+    //     commit('setTestRecording', testRecordingData)
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error)
+    //   }
+    // },
   },
   getters: {
     audioIsPlaying(state) {

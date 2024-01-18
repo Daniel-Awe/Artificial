@@ -1,5 +1,6 @@
 import request from '@/utiles/request'
 
+// 数据库请求（得自己配啦）
 export function getUsersData() {
   return request.get('/mysql/usersdata')
 }

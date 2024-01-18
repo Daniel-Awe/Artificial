@@ -1,4 +1,5 @@
 <template>
+  <!-- 人工智能 页面 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
@@ -24,7 +25,6 @@
               <ArtWord :text="usedatas[0].title"></ArtWord>
               <div class="tip" style="opacity: 0">点击展开</div>
             </div>
-
             <div class="intro">
               <div>{{ usedatas[0].intro1 }}</div>
               <div class="ot">

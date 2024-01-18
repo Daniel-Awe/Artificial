@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 人工智能 页面的拓展介绍的实线边框-->
     <div class="smbox" :style="{ width: boxWidth == 0 ? 'fit-content' : boxWidth + 'px' }">{{ text }}</div>
   </div>
 </template>

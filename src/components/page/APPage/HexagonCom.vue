@@ -1,4 +1,5 @@
 <template>
+  <!-- 六角形 -->
   <div style="width: 400px">
     <canvas id="hexagon" width="400" height="400"></canvas>
     <canvas id="hexagon1" width="400" height="400"></canvas>

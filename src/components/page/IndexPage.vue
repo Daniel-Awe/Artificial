@@ -1,4 +1,5 @@
 <template>
+  <!-- 首页 页面 -->
   <div id="app">
     <!-- 侧边栏 -->
     <SideNavigationBar></SideNavigationBar>

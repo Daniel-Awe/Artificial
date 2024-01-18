@@ -1,4 +1,6 @@
 <template>
+  <!-- Stable Diffusion 平台页面 -->
+  <!-- Stable Diffusion Webui -> 进阶原理 -> 图片后期 -> Experience -->
   <div id="app">
     <div class="background">
       <div class="initChoice">

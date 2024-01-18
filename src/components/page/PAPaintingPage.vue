@@ -1,4 +1,5 @@
 <template>
+  <!-- 实际应用 页面 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
@@ -14,7 +15,6 @@
           </div>
           <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px; margin-top: 7px">{{ item.tips }}</div>
         </div>
-
         <!-- 两侧的箭头 -->
         <div class="left-arrow" :style="{ display: this.drawingIndex == 0 ? 'none' : 'block' }">
           <img :src="leftArrowImg" alt="" @click="this.drawingIndex -= 1" />
@@ -27,6 +27,7 @@
           <div class="circleButton" v-for="(item, id) in drawingAid" :key="id" :style="{ background: this.drawingIndex == id ? 'rgba(105, 255, 246, 1)' : 'transparent' }" @click="this.drawingIndex = id"></div>
         </div>
       </div>
+
       <!-- 2. 辅助建筑设计 -->
       <div class="sec">
         <!-- 内容 -->
@@ -53,9 +54,7 @@
           </div>
           <BoxWord :boxword="this.design[3].content" :textIndent="false" :boxWidth="1400" style="margin: 40px 0 0 200px"></BoxWord>
         </div>
-
         <!-- 两侧的箭头 -->
-
         <div class="left-arrow" :style="{ display: this.designIndex == 0 ? 'none' : 'block' }">
           <img :src="leftArrowImg" alt="" @click="this.designIndex -= 1" />
         </div>
@@ -67,7 +66,8 @@
           <div class="circleButton" v-for="(item, id) in design" :key="id" :style="{ background: this.designIndex == id ? 'rgba(105, 255, 246, 1)' : 'transparent' }" @click="this.designIndex = id"></div>
         </div>
       </div>
-      <!-- 绘画2D转3D -->
+
+      <!-- 3. 绘画2D转3D -->
       <div class="sec">
         <!-- 内容 -->
         <div class="part" v-for="(item, id) in painting2D" :key="id" :style="{ opacity: this.painting2DIndex == id ? '1' : '0', 'z-index': this.painting2DIndex === id ? '5' : '1' }">
@@ -77,7 +77,6 @@
           <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px; margin-top: 25px">{{ item.tips }}</div>
           <div style="text-align: center; font-size: 30px; color: #fff; width: 1600px; line-height: 52px" v-if="item.tips1">{{ item.tips1 }}</div>
         </div>
-
         <!-- 两侧的箭头 -->
         <div class="left-arrow" :style="{ display: this.painting2DIndex == 0 ? 'none' : 'block' }">
           <img :src="leftArrowImg" alt="" @click="this.painting2DIndex -= 1" />

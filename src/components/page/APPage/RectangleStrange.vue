@@ -1,4 +1,5 @@
 <template>
+  <!-- 奇怪的矩形边框 -->
   <div class="rectangle">
     <img :src="deconateImg" alt="" class="deconateImg1" />
     <img :src="deconateImg" alt="" class="deconateImg2" />

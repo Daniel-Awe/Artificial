@@ -1,4 +1,6 @@
 <template>
+  <!-- 题库 页面 -->
+  <!-- 这里没什么好看的，你可能看不太明白，毕竟是屎山代码 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 99"></SideNavigationBar>

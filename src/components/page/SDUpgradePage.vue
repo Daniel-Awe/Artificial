@@ -1,4 +1,6 @@
 <template>
+  <!-- Stable Diffusion Webui“进阶原理”页面 -->
+  <!-- Stable Diffusion Webui -> 进阶原理 -->
   <div id="app">
     <!-- 侧边栏导航 -->
     <SideNavigationBar style="z-index: 999"></SideNavigationBar>
