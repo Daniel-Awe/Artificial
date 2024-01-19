@@ -14,3 +14,4 @@ export function putUsersData(id, data) {
 export function deleteUsersData(id) {
   return request.delete(`/mysql/usersdata?id=${id}`)
 }
+// https://github.com/Daniel-Awe/artificialintelligence.git
